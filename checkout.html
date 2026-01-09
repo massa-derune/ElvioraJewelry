@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+
+<html dir="rtl" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>   إتمام الطلب</title>
+<link href="images/logo1.jpg" rel="icon"/> <!---تكملة مسار الصوؤة يلي بدي حطها ايقونة-->
+<link href="css/all.min.css" rel="stylesheet"/>
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<!-- Animate.css -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+</link></link></head>
+<body>
+<!-- start header -->
+<header>
+<div class="top-header py-2">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<a href=""> <!---لوغو قابل للضغط-->
+<img alt="logo" src="images/empty logo.png" width="100"/>
+</a>
+</div>
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<input class="form-control" placeholder="اكتب اسم المنتج للبحث عنه" type="text"/>
+</div>
+<div class="col-md-4 left-header d-flex align-items-center d-none d-lg-flex justify-content-end">
+<a class="position-relative aria-controls=" data-bs-toggle="offcanvas" href="#cart" offcanvasexample"="" role="button">
+<span> السلة</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<!-- عداد السلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="cartCount">
+    0
+  </span>
+</a>
+<a aria-controls="offcanvasExample" data-bs-toggle="offcanvas" href="#login" role="button">
+<span class="js-login-label"> الدخول</span><span class="js-user-name d-none" data-user-name=""></span>
+<i class="fa-solid fa-user"></i>
+</a>
+<a aria-controls="offcanvasCurrency" data-bs-toggle="offcanvas" href="#currency" role="button">
+<span> تحويل العملة</span>
+<i class="fa-solid fa-money-bill-transfer"></i>
+</a>
+<!-- زر القلب في الهيدر -->
+<a aria-controls="offcanvasExample" class="position-relative" data-bs-toggle="offcanvas" href="#fav" role="button">
+<span>المفضلة</span>
+<i class="fa-solid fa-heart"></i>
+<!-- عدّاد المفضلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="favCount">
+                 0
+          </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="buttom-header">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler menu-icon" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#cart" type="button">
+<i class="fa-solid fa-cart-shopping"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#login" type="button">
+<i class="fa-solid fa-user"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#currency" type="button">
+<i class="fa-solid fa-money-bill-transfer"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#fav" type="button">
+<i class="fa-solid fa-heart"></i>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-3 mb-lg-0">
+<li class="nav-item">
+<a aria-current="page" class="nav-link active" href="index.html">الرئيسية</a>
+</li>
+<!-- Dropdown اكسسوارات -->
+<li class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="accessoriesDropdown" role="button">
+        اكسسوارات
+      </a>
+<ul aria-labelledby="accessoriesDropdown" class="dropdown-menu">
+<li><a class="dropdown-item" href="Collar_earr_brac.html">حلق</a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اطواق </a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اساور</a></li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="Rings.html">خواتم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="set.html">اطقم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="diversified.html">منوع</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- end header -->
+<br/>
+<br/>
+<section class="mt-5">
+<div class="container">
+<div class="row">
+<!-- معلومات الشحن -->
+<div class="col-md-6 mb-4">
+<div class="user-info p-4 rounded shadow-sm border">
+<!-- <h4 class="cart-product-title my-3">معلومات الشحن</h4> -->
+<form id="checkoutForm">
+<div h4 id="checkoutLoginAlert" class="alert alert-warning d-none" role="alert">معلومات الشحن </div>
+<div class="mb-3">
+<label class="form-label">الاسم:</label>
+<input class="form-control" id="fullName" placeholder="الرجاء إدخال الاسم" type="text" required/>
+</div>
+<div class="mb-3">
+<label class="form-label">البريد الإلكتروني:</label>
+<input class="form-control" id="email" placeholder="الرجاء إدخال البريد الالكتروني" type="email" required/>
+</div>
+<div class="mb-3">
+<label class="form-label">رقم الهاتف:</label>
+<input class="form-control" id="phone" placeholder="أدخل رقم الهاتف" type="tel" required/>
+</div>
+<div class="mb-3">
+<label class="form-label">المحافظة:</label>
+<select class="form-select" id="citySelect">
+<option disabled="" selected="">اختر المحافظة</option>
+<option value="دمشق">دمشق</option>
+<option value="حلب">حلب</option>
+<option value="حمص">حمص</option>
+<option value="حماة">حماة</option>
+<option value="اللاذقية">اللاذقية</option>
+<option value="طرطوس">طرطوس</option>
+<option value="درعا">درعا</option>
+<option value="دير الزور">دير الزور</option>
+<option value="الحسكة">الحسكة</option>
+<option value="الرقة">الرقة</option>
+<option value="السويداء">السويداء</option>
+<option value="إدلب">إدلب</option>
+</select>
+</div>
+<div class="mb-3">
+<label class="form-label">تفاصيل السكن:</label>
+<input class="form-control" id="address" placeholder="الرجاء إدخال العنوان الكامل" type="text" required/>
+</div>
+<div class="mb-3">
+<label class="form-label">ملاحظات حول الشحن:</label>
+<textarea class="form-control" id="notes" rows="3"></textarea>
+</div>
+</form>
+</div>
+</div>
+<!-- المنتجات -->
+<div class="col-md-6 mb-4">
+<div class="products-cart p-4 rounded shadow-sm border">
+<h4 class="cart-product-title mb-3">🛒 سلة المشتريات</h4>
+<div id="checkoutProducts"></div>
+<hr/>
+<div class="d-flex justify-content-between align-items-center mt-3">
+<div class="total-price fs-5 fw-bold">
+              الإجمالي: <span id="finalTotal">0$</span>
+</div>
+</div>
+<!-- صور طرق الدفع -->
+<div class="payment-logos d-flex flex-wrap gap-2 mt-3">
+<img alt="الهرم" src="images/شركة الهرم.png" width="80"/>
+<img alt="شركة الفؤاد" src="images/شركة الفؤاد.png" width="80"/>
+<img alt="شام كاش" src="images/شام كاش2.jpg" width="80"/>
+<img alt="بنك بيمو السعودي" src="images/بنك بيمو السعودي.png" width="80"/>
+<img alt="الدفع عند الاستلام" src="images/دفع نقدي.png" width="80"/>
+</div>
+<!-- طرق الدفع -->
+<div class="form-check">
+<input class="form-check-input" id="haram" name="payment_method" type="radio" value="haram"/>
+<label class="form-label" for="haram">الهرم</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="alfuad" name="payment_method" type="radio" value="alfuad"/>
+<label class="form-label" for="alfuad">شركة الفؤاد للحوالات</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="shamcash" name="payment_method" type="radio" value="shamcash"/>
+<label class="form-label" for="shamcash">شام كاش</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" id="bimo" name="payment_method" type="radio" value="bimo"/>
+<label class="form-label" for="bimo">بنك بيمو السعودي</label>
+</div>
+<div class="form-check mt-3">
+<input class="form-check-input" id="cash" name="payment_method" type="radio" value="cash"/>
+<label class="form-label" for="cash">الدفع نقدًا عند استلام الطلب أو عند زيارتك للمحل في دمشق</label>
+</div>
+<button class="btn btn-danger w-100 mt-3" id="submitOrder">إتمام الطلب</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- مودال نجاح الطلب -->
+<div aria-hidden="true" class="modal fade" id="successModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content custom-modal">
+<div class="modal-header custom-header">
+<h5 class="modal-title">✅ تم الطلب بنجاح</h5>
+<button aria-label="إغلاق" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body text-center">
+<p class="fs-5">شكراً لثقتك بنا 🌹<br/>سوف يتم التواصل معك لتأكيد الطلب.</p>
+</div>
+<div class="modal-footer">
+<button class="btn custom-btn w-100" data-bs-dismiss="modal">تمام</button>
+</div>
+</div>
+</div>
+</div>
+<style>
+</style>
+<hr/>
+<!-- قسم توصيل المجوهرات -->
+<div class="container mb-5">
+<div class="p-4 rounded shadow-lg golden-border delivery-box">
+<h2 class="text-gold mb-4">توصيل المجوهرات بأمان وسلام</h2>
+<p>
+      نحن ندرك أن المجوهرات تحتاج إلى عناية خاصة أثناء النقل، لذلك نضمن وصول كل قطعة إليك بأمان تام. 
+      يتم تغليف منتجاتنا بعناية فائقة باستخدام مواد عالية الجودة ووسائد حماية قوية لضمان سلامتها أثناء الشحن.
+    </p>
+<p>
+      نوفر طرق توصيل موثوقة وسريعة لكل المحافظات السورية، بما في ذلك دمشق، حلب، حمص، حماة، اللاذقية، طرطوس، درعا، دير الزور، الحسكة، الرقة، السويداء، وإدلب. 
+      يتم التعامل مع كل شحنة بعناية فائقة لضمان وصولها في الوقت المحدد وبحالة ممتازة.
+    </p>
+<p>كما نحرص على تقديم خيارات متعددة للشحن تشمل:</p>
+<ul class="delivery-list">
+<li><strong>الشحن السريع داخل دمشق:</strong> خدمة التوصيل حتى باب المنزل.</li>
+<li><strong>الشحن الوطني لبقية المحافظات:</strong> عبر شركات شحن موثوقة مع إمكانية تتبع الشحنة.</li>
+<li><strong>تغليف فاخر ومخصص:</strong> لضمان حماية المجوهرات من أي خدوش أو تلف.</li>
+</ul>
+<p>
+      هدفنا هو تقديم تجربة شراء مريحة وآمنة، حيث تصل مجوهراتك بحالة مثالية لتستمتع بها فور استلامها.
+    </p>
+</div>
+</div>
+<!-- start footer -->
+<footer>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+<div class="col f1 mb-3">
+<img alt="logo" class="w-50" src="images/empty logo.png"/>
+<!-- نص بما يخص المتجر -->
+<p class="">
+متجرنا يقدم الجودة العالية وسرعة تلبية طلبات الزبائن
+</p>
+<!-- يمنع دخول النقاطli داخل ال  -->
+<ul class="navbar-nav">
+<li><i class="fa-solid fa-location-dot"></i>سوريا - دمشق </li>
+<li><i class="fa-solid fa-phone"></i> 09998841365  </li>
+<li><i class="fa-solid fa-envelope"></i> ElvioraJewelry@gmail.com </li>
+</ul>
+</div>
+<div class="col f2 mb-3">
+<h3>اهم الروابط</h3>
+<ul class="navbar-nav">
+<li><a href="">الرئيسية</a></li>
+<li><a href="">اكسسوارات</a></li>
+<li><a href="">خواتم</a></li>
+<li><a href=""> أطقم</a></li>
+<li><a href="">منوع </a></li>
+</ul>
+</div>
+<div class="col f3 mb-3">
+<h3> التصنيفات</h3>
+<ul class="navbar-nav">
+<li><a href="">ذهب</a></li>
+<li><a href="">ألماس</a></li>
+<li><a href="">فضة</a></li>
+
+</ul>
+</div>
+<div class="col f4 mb-3">
+  <h3>كن أول من يعرف</h3>
+  <p>اشترك لتصلك تشكيلاتنا الجديدة والعروض الحصرية مباشرة إلى بريدك.</p>
+  <form class="newsletter-form" novalidate>
+    <input class="form-control mb-3" name="email" type="email" placeholder="أدخل بريدك الإلكتروني" required>
+    <button class="btn btn-danger w-100" type="submit">اشترك الآن</button>
+    <div class="newsletter-message small mt-2" role="status"></div>
+  </form>
+</div>
+</form>
+</div>
+    </div>
+    <div class="row row-cold-1 row-cols-md-2 mt-3">
+      <div class="col d-flex justify-content-center-end"><p class="text-white text-center"> جميع الحقوق المحفوظة &copy; 2025 لمتجر المناسب لبيع الكتب </p>
+      </div>
+    </div>
+  </div>
+</footer> -->
+<form action="">
+<input class="form-control mb-3" placeholder="الرجاء ادخال البريد" type="text"/>
+<button class="btn btn-danger w-100">اشتراك</button>
+</form>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-6 d-flex justify-content-start">
+</div>
+<div class="col-md-6 d-flex align-items-center justify-content-end">
+<p class="text-black m-0">جميع الحقوق المحفوظة © 2025 لمتجر Elviora لبيع المجوهرات</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- end footer -->
+<!-- start modal -->
+<div aria-hidden="true" class="modal fade" id="quick-product" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="modalTitle"></h5>
+<button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<div class="row row-cols-1 row-cols-md-2">
+<div class="col">
+<img alt="" class="img-fluid" id="modalImg" src=""/>
+<button class="btn btn-primary w-100 mt-2">كافة التفاصيل</button>
+<button class="btn btn-outline-success w-100 mt-2" id="tryOnBtn">جرّبي بالكاميرا</button>
+</div>
+<div class="col">
+<h1 class="modal-title fs-5 mt-2 my-3" id="modalTitle2"></h1>
+<p class="product-description" id="modalDesc"></p>
+<div class="price mb-3">
+<span id="modalPrice"></span>
+</div>
+<div class="btns d-flex gap-2">
+<div>
+<div class="btn-group btns-quantity">
+<button class="btn increase" type="button">+</button>
+<button class="btn qty-btn" disabled="" type="button">1</button>
+<button class="btn decrease" type="button">-</button>
+</div>
+</div>
+<div class="d-flex gap-1 add-btn">
+<button class="btn btn-danger add-to-cart">إضافة الى السلة</button>
+<button class="btn btn-success buy-now">شراء الآن</button>
+</div>
+</div>
+<hr/>
+<div class="gategory mb-3">
+<span>التصنيفات:</span>
+<a href="#" id="modalCategory"></a>
+<!-- من اجل المشاركة على مواقع التواصل الاجتماعي -->
+<div class="share">
+<span>المشاركة:</span>
+<div class="share-icons d-inline-flex gap-2">
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-whatsapp"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin-in"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end modal --><!-- end fav -->
+<!-- نافذة تحويل العملة -->
+<div aria-labelledby="currencyLabel" class="offcanvas offcanvas-end" id="currency" tabindex="-1">
+<div class="offcanvas-header">
+<h5 id="currencyLabel">تحويل العملة</h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mb-3">
+<label class="form-label">سعر الدولار الحالي (ل.س):</label>
+<input class="form-control" id="usdRate" readonly="" type="text"/>
+<small class="text-muted">يتم تحديث السعر تلقائياً عند فتح النافذة.</small>
+</div>
+<div class="mb-3">
+<label class="form-label" for="usdAmount">المبلغ بالدولار (USD):</label>
+<input class="form-control" id="usdAmount" placeholder="مثال: 150" type="number"/>
+</div>
+<button class="btn btn-primary w-100 mb-3" id="btnUsdToSyp">تحويل إلى ليرة</button>
+<div class="mb-3">
+<label class="form-label" for="sypAmount">المبلغ بالليرة السورية (SYP):</label>
+<input class="form-control" id="sypAmount" placeholder="مثال: 1777500" type="number"/>
+</div>
+<button class="btn btn-primary w-100 mb-3" id="btnSypToUsd">تحويل إلى دولار</button>
+<button class="btn btn-outline-secondary w-100" id="btnClear">مسح</button>
+<div class="alert d-none mt-3" id="result"></div>
+<hr/>
+<a class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2" href="https://www.sp-today.com//" target="_blank">
+<i class="fa-solid fa-globe"></i>
+      الليرة اليوم - أسعار الذهب والدولار
+    </a>
+</div>
+</div>
+<!-- end -->
+<!-- cart -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas سلة المشتريات -->
+<div aria-labelledby="cartLabel" class="offcanvas offcanvas-end" id="cart" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="cartLabel">سلة المشتريات</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="row row-cols-1 row-mini-card"></div>
+<p class="alert alert-danger p-3 my-3 text-center" id="cartTotal">مجموع المنتجات: 0$.</p>
+<button class="btn btn-primary w-100 mb-2" id="viewCartBtn">عرض السلة</button>
+<button class="btn btn-danger w-100" id="checkoutBtn">إتمام الطلب</button>
+</div>
+</div>
+<!-- log in -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas تسجيل الدخول -->
+<div aria-labelledby="loginLabel" class="offcanvas offcanvas-start" id="login" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="loginLabel">تسجيل الدخول</h5>
+<button aria-label="إغلاق" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mini-login">
+<form id="loginForm">
+<div class="mb-3">
+<label class="form-label" for="loginEmail">اسم المستخدم أو البريد</label>
+<input class="form-control" id="loginEmail" placeholder="example@email.com" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="loginPassword">كلمة المرور</label>
+<input class="form-control" id="loginPassword" placeholder="••••••" required="" type="password"/>
+</div>
+<div class="mb-3 form-check">
+<input class="form-check-input" id="rememberMe" type="checkbox"/>
+<label class="form-check-label" for="rememberMe">تذكر بياناتي</label>
+</div>
+<button class="btn btn-primary w-100" type="submit">تسجيل الدخول</button>
+</form>
+<div class="alert alert-danger my-3 text-center d-none" id="loginError">
+        البريد أو كلمة المرور غير صحيحة
+      </div>
+<hr/>
+<div class="text-center mt-3">
+<i class="fa-regular fa-user fa-5x"></i>
+<p class="mt-2">لا يوجد لديك حساب؟</p>
+<a class="btn btn-danger w-100 text-white" href="register.html">إنشاء حساب جديد</a>
+</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="favLabel" class="offcanvas offcanvas-start" id="fav" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="favLabel">المفضلة</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<ul class="list-unstyled" id="favList"></ul>
+<p class="alert alert-info text-center d-none" id="favCountText">0 منتجات</p>
+</div>
+</div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/gold.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/currency.js"></script>
+<script src="js/newsletter.js"></script>`n<script src="js/chatbot_widget.js?v=20260209"></script>
+<!-- Checkout logic is handled by gold.js (single source of truth) -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

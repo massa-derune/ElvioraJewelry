@@ -1,0 +1,1795 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title> Elviora Jewelry </title>
+<link href="images/logo1.jpg" rel="icon"/> <!---تكملة مسار الصوؤة يلي بدي حطها ايقونة-->
+<link href="css/all.min.css" rel="stylesheet"/>
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet"/></head>
+<body class="home-page">
+<!-- start header -->
+<header>
+<div class="top-header py-2">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<a href=""> <!---لوغو قابل للضغط-->
+<img alt="logo" src="images/empty logo.png" width="150"/>
+</a>
+</div>
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<input class="form-control" placeholder="اكتب اسم المنتج للبحث عنه" type="text"/>
+</div>
+<div class="col-md-4 left-header d-flex align-items-center d-none d-lg-flex justify-content-end">
+<a class="position-relative aria-controls=" data-bs-toggle="offcanvas" href="#cart" offcanvasexample"=" role="button">
+<span> السلة</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<!-- عداد السلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="cartCount">
+    0
+  </span>
+</a>
+<a aria-controls="offcanvasExample" data-bs-toggle="offcanvas" href="#login" role="button">
+<span class="js-login-label"> الدخول</span><span class="js-user-name d-none" data-user-name=""></span>
+<i class="fa-solid fa-user"></i>
+</a>
+<a aria-controls="offcanvasCurrency" data-bs-toggle="offcanvas" href="#currency" role="button">
+<span> تحويل العملة</span>
+<i class="fa-solid fa-money-bill-transfer"></i>
+</a>
+<!-- زر القلب في الهيدر -->
+<a aria-controls="offcanvasExample" class="position-relative" data-bs-toggle="offcanvas" href="#fav" role="button">
+<span>المفضلة</span>
+<i class="fa-solid fa-heart"></i>
+<!-- عدّاد المفضلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="favCount">
+                 0
+          </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="buttom-header">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler menu-icon" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#cart" type="button">
+<i class="fa-solid fa-cart-shopping"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#login" type="button">
+<i class="fa-solid fa-user"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#currency" type="button">
+<i class="fa-solid fa-money-bill-transfer"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#fav" type="button">
+<i class="fa-solid fa-heart"></i>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-3 mb-lg-0">
+<li class="nav-item">
+<a aria-current="page" class="nav-link active" href="index.html">الرئيسية</a>
+</li>
+<!-- Dropdown اكسسوارات -->
+<li class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="accessoriesDropdown" role="button">
+        اكسسوارات
+      </a>
+<ul aria-labelledby="accessoriesDropdown" class="dropdown-menu">
+<li><a class="dropdown-item" href="Collar_earr_brac.html">حلق</a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اطواق </a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اساور</a></li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="Rings.html">خواتم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="set.html">اطقم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="diversified.html">منوع</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- end header -->
+<!-- Currency Offcanvas (Sell rate + conversion) -->
+<div aria-labelledby="currencyLabel" class="offcanvas offcanvas-end" id="currency" tabindex="-1">
+<div class="offcanvas-header">
+<h5 id="currencyLabel">تحويل العملة (USD ⇄ SYP)</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mb-3">
+<label class="form-label">سعر الدولار (المبيع) الآن</label>
+<input class="form-control" id="usdRate" readonly="" type="text"/>
+<small class="text-muted">يتم جلبه تلقائياً من sp-today وتخزينه بالداتا</small>
+</div>
+<div class="mb-3">
+<label class="form-label">القيمة بالدولار (USD)</label>
+<input class="form-control" id="usdAmount" placeholder="مثال: 10" type="number"/>
+</div>
+<div class="mb-3">
+<label class="form-label">القيمة بالليرة السورية (SYP)</label>
+<input class="form-control" id="sypAmount" placeholder="مثال: 150000" type="number"/>
+</div>
+<div class="d-grid gap-2">
+<button class="btn btn-success" id="btnUsdToSyp" type="button">
+        تحويل USD → SYP
+      </button>
+<button class="btn btn-primary" id="btnSypToUsd" type="button">
+        تحويل SYP → USD
+      </button>
+<button class="btn btn-outline-secondary" id="btnClear" type="button">
+        مسح الحقول
+      </button>
+</div>
+<div class="alert alert-info d-none" id="result"></div>
+<a class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2 mt-2" href="https://sp-today.com/" target="_blank">
+<i class="fa-solid fa-globe"></i>
+      فتح المصدر (sp-today)
+    </a>
+</div>
+</div>
+<!-- start slider -->
+<section class="slider mt-2">
+<div class="container-fluid p-0">
+<div class="row g-0">
+<div class="col-12">
+<div class="carousel slide" data-bs-ride="carousel" id="main-slider">
+<!-- المؤشرات -->
+<div class="carousel-indicators">
+<button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#main-slider" type="button"></button>
+<button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#main-slider" type="button"></button>
+<button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#main-slider" type="button"></button>
+</div>
+<!-- الصور -->
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img alt="..." class="d-block w-100 slider-img" src="images/showcase.png"/>
+<div class="carousel-caption d-none d-md-block">
+<p>المجوهرات ليست زينة فقط، بل انعكاس لقصتكِ وأسلوبكِ.</p>
+<!-- <a href="#" class="btn btn-warning btn-lg mt-3">تسوق الآن</a> -->
+</div>
+</div>
+<div class="carousel-item">
+<img alt="..." class="d-block w-100 slider-img" src="images/showcase1.jpg"/>
+<div class="carousel-caption d-none d-md-block">
+<p>مجوهراتنا صُنعت بحب وعناية لتُرافقك في لحظاتك الثمينة.</p>
+<!-- <a href="#" class="btn btn-warning btn-lg mt-3">المزيد</a> -->
+</div>
+</div>
+<div class="carousel-item">
+<img alt="..." class="d-block w-100 slider-img" src="images/showcase3.jpg"/>
+<div class="carousel-caption d-none d-md-block">
+<p>تألّقي مع أرقى تصاميم المجوهرات التي تجمع بين الفخامة والذوق الرفيع.</p>
+<!-- <a href="#" class="btn btn-warning btn-lg mt-3">اكتشف الآن</a> -->
+</div>
+</div>
+</div>
+<!-- أزرار التنقل -->
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#main-slider" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#main-slider" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- end slider -->
+<!-- CSS -->
+<style>
+/* الصور */
+.slider-img {
+  width: 100%;
+  height: 90vh;       /* على الشاشات الكبيرة */
+  object-fit: cover;
+}
+
+/* النصوص */
+.carousel-caption {
+  bottom: 20%;
+  text-align: center;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+
+/* زر */
+.carousel-caption .btn {
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* على الموبايل */
+@media (max-width: 768px) {
+  .slider-img {
+    height: 70vh;
+  }
+
+  .carousel-caption {
+    bottom: 40%; /* يجي بالنص تقريبا */
+  }
+
+  .carousel-caption p {
+    font-size: 1.2rem;
+  }
+
+  .carousel-caption .btn {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}
+</style>
+<!-- end slider -->
+<div class="container pt-5">
+<!-- من نحن -->
+<div class="mb-5 p-4 rounded shadow-lg golden-border">
+<h2 class="text-gold mb-3">من نحن</h2>
+<p class="main-text">
+    نحن متجر إلكتروني للمجوهرات في دمشق، نقدّم قطعاً فريدة تجمع بين الفخامة والأناقة. 
+    نسعى لتوفير تجربة تسوق آمنة وسلسة، مع تغليف آمن وتسليم موثوق. اكتشف تصاميمنا المميزة وأضف لمسة من الرقي لكل مناسبة.
+  </p>
+</div>
+</div>
+<!-- start categories -->
+<section class="categories">
+<h2 class="text-center section-title">كافة التصنيفات</h2>
+<div class="container">
+<div class="row">
+<div class="col-6 col-md-6 col-lg-3">
+<a href="Rings.html">
+<div class="card seno ove">
+<img alt="" src="images/goldA1.webp"/>
+</div>
+<h3 class="text-center"> خواتم</h3>
+</a>
+</div>
+<div class="col-6 col-md-6 col-lg-3">
+<a href="Collar_earr_brac.html">
+<div class="card seno ove">
+<img alt="" src="images/حلق تركي عيار 21_2.webp"/>
+</div>
+<h3 class="text-center"> حلق</h3>
+</a>
+</div>
+<div class="col-6 col-md-6 col-lg-3">
+<a href="diversified.html">
+<div class="card seno ove">
+<img alt="" src="images/تعليقة غيار 24(2).webp"/>
+</div>
+<h3 class="text-center"> منوع </h3>
+</a>
+</div>
+<div class="col-6 col-md-6 col-lg-3">
+<a href="Collar_earr_brac.html">
+<div class="card seno ove">
+<img alt="" src="images/سلسال عيار18.webp"/>
+</div>
+<h3 class="text-center"> اطواق</h3>
+</a>
+</div>
+<div class="col-6 col-md-6 col-lg-3">
+<a href="set.html">
+<div class="card seno ove">
+<img alt="" src="images/طقم ذهب بيضاوي مخطط 1.jpg"/>
+</div>
+<h3 class="text-center"> اطقم</h3>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- start products -->
+<section class="products">
+<h2 class="text-center section-title">اكثر المنتجات مبيعاً </h2>
+<div class="container-fluid best-seller my-4">
+<!-- فلترة للعناصر بحيث عند الضغط على زر من الازرار يظهر على حسب الصنف -->
+<div class="btn-group mb-3 filter-button-group">
+<button class="btn btn-filter" data-filter="*" type="button">الكل</button>
+<button class="btn btn-filter" data-filter=".silver" type="button">  فضة </button>
+<button class="btn btn-filter" data-filter=".gold" type="button"> ذهب </button>
+<button class="btn btn-filter" data-filter=".diamond" type="button"> ألماس </button>
+</div>
+<div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-2 all-products">
+<!-- data-id="1"  من اجل ظهور في صفحة المنتجات حسب id -->
+<div class="col product mb-3 gold" data-id="1">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="عقد الماس" class="product-img" src="images/عقد الماس2.webp"/>
+<div class="product-info">
+<h3 class="product-title">عقد الماس</h3>
+<p> عيار 21  </p>
+<p class="product-description d-none">
+        عيار 21، تصميم فاخر وأنيق مناسب للمناسبات الخاصة. يتميز ببريقه العالي وجودة الألماس.
+      </p>
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<div class="price mb-2">
+<span class="product-price">السعر: 6,000$</span>
+</div>
+<span class="product-category d-none">أطقم ألماس</span>
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/عقد الماس2.webp" data-price="6,000" data-title="عقد الماس">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold" data-id="2">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt=" خاتم ذهب" class="product-img" src="images/خاتم ذهب الكرات الملونة(2).jpg"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> خاتم ذهب الكرات الملونة</h3>
+<p> عيار 18  </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+        خاتم ذهب الكرات الملونة ( عيار 18 )
+لأنكِ تستحقين التميز
+
+تفرّدي بإطلالة تنطق بالفن والجمال مع هذا الخاتم الذهبي الفاخر من مجموعة أوليفيرا، بتصميم مستوحى من الزخارف الشرقية الراقية التي تنسج تفاصيلها بدقة وإبداع. تزيّنه كرات ذهبية متعددة الألوان في قلب زخرفة هندسية أنيقة، ليجمع بين عراقة التراث وحداثة الذوق. قطعة تُعبّر عن تميّزك وتُضيف على حضورك لمسة من الفخامة والثقة. اقتنيه الآن وكوني متفرّدة بأسلوبك، لأنكِ تستحقين كل ما هو مبهر.
+تفاصيل القطعة:
+
+نقاوة الذهب: 18 قيراط
+
+وزن القطعة: 2.7
+
+مقاس الخاتم 19 ( 9 امريكي )
+
+الإضافة : بالذهب الخالص
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر: 450$  </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> ذهب</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ذهب الكرات الملونة(2).jpg" data-price=" 450 " data-title=" خاتم ذهب الكرات الملونة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold" data-id="3">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="تعليقة ذهب " class="product-img" src="images/تعليقة غيار 24(2).webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> تعليقة ذهب </h3>
+<p>عيار 24 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+      تعليقة ذهب عيار 24 
+  وزن :  5جرام 
+تألقي بما يليق بكِ!
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 6,800$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> تعليقة ذهب</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/تعليقة غيار 24(2).webp" data-price="6,800$" data-title=" تعليقة ذهب">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold diamond" data-id="4">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt=" خاتم أزورا الألماسية " class="product-img" src="images/خاتم أزورا الألماسية.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> خاتم أزورا الألماسية </h3>
+<p> ذهب عيار 18 مع مينا أزرق وألماس  </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+   أزورا الألماسية – مجوهرات ذهب عيار 18 مع مينا أزرق وألماس
+اختبري فخامة التفاصيل مع أزورا الألماسية — قطعة تحتفي بالأناقة والتميّز. تتميز بالمينا الأزرق العميق، والألماس اللامع، وصناعة متقنة من الذهب عيار 18، لتناسب المرأة التي تعبّر عن جمالها بطريقتها الخاصة. سواء ارتديتها بمفردها أو ضمن مجموعة أزورا، فهي تترك أثراً لا يُنسى.
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 1,400$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم أزورا الألماسية </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم أزورا الألماسية.webp" data-price="السعر : 1,400$ " data-title="   خاتم ألماس وذهب">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold" data-id="5">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="حلق تركي " class="product-img" src="images/حلق تركي عيار 21_2.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> حلق تركي </h3>
+<p>عيار 21 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+      حلق تركي عيار 21 قيراط ووزن 4.8 جرام تتألق هذه القطعة الفريدة بالجمال والأناقة و مصنوعة بعناية فائقة استمتعي مع حلق ذهب كويتي الذي يتميز بالرقي والجاذبية .
+
+يتميز بتصميم فريد وفريد من نوعه يضفي لمسة خاصة على إطلالتك.
+صُنع من ذهب عيار 21 قيراط ، مما يضمن جودة عالية ومتانة تدوم طويلاً.
+يمثل تراثاً ثقافياً عريقاً يمكنك الاحتفاظ به وتمريره إلى الأجيال القادمة.
+يضفي لمسة من الفخامة والترف على مظهرك، مما يجعلك تشعر بالثقة والأناقة.
+يعتبر استثماراً جيداً لقيمته العالية وقابليته للزيادة في المستقبل.
+يمكن ارتداء هذا الحلق في المناسبات الرسمية والحفلات وحتى في الاجتماعات اليومية لإضفاء لمسة من الأناقة.
+يعتبر حلق ذهب كويتي هدية رائعة لمن تحب، فهو يعكس الاهتمام والذوق الرفيع.
+يبرز جمال الذهب الطبيعي ويرفع من قيمته وجاذبيته العامة.
+يمنح لمسة من اللمعان والجاذبية التي تبرز جمال يديك.
+يتمتع بتصميم مريح يجعل ارتداؤه سهلاً ومريحًا طوال اليوم.
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 798$</span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> حلق ذهب</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/حلق تركي عيار 21_2.webp" data-price="798" data-title="حلق تركي">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold" data-id="6">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt=" حلق " class="product-img" src="images/حلق عيار21_2.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> حلق ذهب </h3>
+<p>عيار 21 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+   أضيفي لمسة من الفخامة إلى إطلالتك مع هذا الحلق المصنوع من ذهب خالص عيار 21 قيراط، بوزن 2.9 غرام. يتميز بتشطيب متقن يبرز تألق الذهب ونعومته، مما يجعله قطعة مثالية للارتداء اليومي أو المناسبات الخاصة. صُمم ليكون خفيفًا وأنيقًا على الأذن، مع جودة عالية تضمن ثبات اللون ولمعان يدوم.
+   
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 440$</span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> حلق ذهب</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/حلق عيار21_2.webp" data-price="440" data-title="حلق تركي">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond" data-id="7">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ألماس" class="product-img" src="images/خاتم ألماس قيراط 0.03.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> خاتم ألماس </h3>
+<p>قيراط 0.24 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+  “خاتم الماس الساحر 0.24 قيراط بالإضافة لقطعة صغيرة تحمل إشراقة كبيرة”
+
+“0.24 قيراط من التألق”: حجم مثالي يجمع بين الأناقة والعمليَّة
+
+تصميم خفيف الظل: يناسب ارتداء اليومي بلمسة فاخرة
+
+نسبة بريق استثنائية رغم صغر الحجم، بفضل قطع الألماس المحترف
+
+      <!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 900$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ألماس</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ألماس قيراط 0.03.webp" data-price="900" data-title="خاتم الماس">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</p></div>
+</div>
+</div>
+<div class="col product mb-3 gold" data-id="8">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="اسم من ذهب " class="product-img" src="images/اسم من ذهب2.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> اسم من ذهب </h3>
+<p>عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+
+حكاية القطعة:
+
+هذه القطعة ستكون الإختيار المناسب لك لتقديم هدية ذو قيمة لاحبائك , تحافظ على تألق المرتدي بها دائما كسلسلة بالأسم،
+نفتح المجال أمام خيالكِ لاختيار تصميم سلسال ذهب اسمكِ بالشكل الذي يلامس قلبكِ ويحرّك مشاعرك باللغة العربية او الإنجليزية .
+
+تفاصيل القطعة:
+نقاوة الذهب: يمكنك اختيار العيار المناسب لك عن طريق التواصل معنا
+
+وزن القطعة: من 3 الى 3.5 جرام تقريباً
+
+طول التعليقة : 2.5*3 سم تقريباً
+
+طول السلسال : 40 سم تقريباً
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 475$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> اسم من ذهب</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/اسم من ذهب2.webp" data-price="475" data-title="اسم من ذهب">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 silver" data-id="9">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt=" قلادة على شكل زهرة برسيم من القلوب " class="product-img" src="images/قلادة كارا بدلاية على شكل زهرة البرسيم من القلوب فضة إسترلينية.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> قلادة على شكل زهرة</h3>
+<p>فضة إسترلينية بطول: 16 بوصة  </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+  بتصميم مصنوع من الفضة إسترلينية ومرصع بأحجار زركونيا مكعبة براقة، كما تأتي بسلسلة رفيعة ودلاية يمكن ارتداؤها على شكل زهرة البرسيم أو صف من القلوب لتمنحك إطلالتين مختلفتين.
+  • الطول: 16 بوصة ووصلة بطول 2.2 بوصة
+  تفاصيل المنتج:• فضة إسترلينية
+
+• أحجار زركونيا مكعبة
+
+• قفل بحلقة دائرية للإغلاق
+
+• تجنبي ملامسة المنتج للمياه أو أي مواد كيماوية مثل العطور واللوشن والكريم وغيرها
+
+• صنع المنتج يدويًا، لذلك قد توجد بعض الاختلافات الطبيعية البسيطة
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 150$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> قلادة فضة</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/قلادة كارا بدلاية على شكل زهرة البرسيم من القلوب فضة إسترلينية.webp" data-price="150" data-title="قلادة على شكل زهرة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond gold" data-id="10">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ألماس" class="product-img" src="images/خاتم ألماس قيراط 0.17.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم ألماس وذهب</h3>
+<p>قيراط 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+    خاتم عيار 18 قيراط
+  تميز بحزام مرصع بخيوط مرصعة بأحجار الماس اللامعة المستديرة ، ويزيد مستدقه اللطيف من أناقة أي حجر يتوج مركزه.
+      </p>
+
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 7,500$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ألماس</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ألماس قيراط 0.17.webp" data-price="7,500$" data-title="خاتم ألماس">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 silver" data-id="11">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ألماس " class="product-img" src="images/خاتم بتصميم زهرة مرصع بكريستال فضة إسترلينية عيار 925.......3.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title"> خاتم مرصع بكريستال  </h3>
+<p>عيار 925 فضة</p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+  يضفي هذا الخاتم بتصميم زهرة من كايلو لمسة أنيقة على مجموعة مجوهراتك بفضل تصميمه المصنوع من فضة إسترلينية لامعة عيار 925 والمرصع بالكامل بكريسالات براقة. يتميز ببتلات بتصميم ماركيز مرصعة ببراعة ويأتي بحلقة مفرغة لضمان الشعور بالراحة، ما يجعله إضافة مميزة إلى إطلالتك الأنثوية العصرية.
+  تفاصيل المنتج :• اللون: فضي
+• فضة إسترلينية عيار 925
+• أحجار زركونيا مكعبة بافيه
+• صناعة يدوية
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<!-- <i class="fa-solid fa-star"></i> -->
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 163$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم فضة</span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم بتصميم زهرة مرصع بكريستال فضة إسترلينية عيار 925.......3.webp" data-price="163" data-title=" خاتم فضة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond" data-id="12">
+<div class="card overflow-hidden">
+<!-- الأيقونات العلوية -->
+<div class="quick-icons">
+<!-- زر نظرة سريعة يفتح المودال -->
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="اسوارة ألماس " class="product-img" src="images/اسوارة ألماس.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">اسوارة ألماس </h3>
+<p> قيراط 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+ 
+اسوارة سحبة بثلاث مربعات مزينة بفصوص لألماس عيار 18 قيراط المشغولة لاستقطاب الضوء ونشره الذي يحيط معصمك بكل حب لتنقلك الى مستوى عال من الانسيابية والجمال لتمنحك باختيارها مظهر متألق وحضور متجدد الجاذبية
+تفاصيل القطعة : وزن القطعة :2.83جرام /وزن الالماس 0.56
+قياس القطعة طولها 17سم
+نوع الفصوص المستخدمة: مزين بالباقيت وفصوص ألماس 
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 2,380$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> أسوارة ألماس </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/اسوارة ألماس.webp" data-price="2,380" data-title="أسوارة ألماس  ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- رسالة لا يوجد منتجات (قبل نهاية السيكشن) -->
+<div class="no-products text-center d-none">
+<p>لا يوجد منتجات في هذا القسم</p>
+</div>
+</section>
+<!-- end products -->
+<!-- start new product -->
+<section class="new-product">
+<div class="container-fluid">
+<h2 class="text-center section-title">احدث المنتجات</h2>
+<!-- Slider main container -->
+<div class="swiper">
+<!-- Additional required wrapper -->
+<div class="swiper-wrapper">
+<!-- Slides -->
+<div class="col product mb-3 gold swiper-slide" data-id="13">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="قلادة ذهب " class="product-img" src="images/قلادة ذهب عيار 18 (2).webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">قلادة ذهب </h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+عقد ذهب   عيار 18 
+يجمع بين البساطة والفخامة
+تفاصيل المنتج:
+أضيفي لمسة من الرقي والنعومة إلى إطلالتك مع هذا العقد الذهبي الأنيق، المصمم بعناية ليجمع بين البساطة والفخامة في آنٍ واحد.
+ارتديه في مناسباتك الخاصة، أو اجعليه رفيقاً لإطلالتك اليومية، ليمنحك حضوراً راقياً لا يُنسى.
+تفصيلته الهادئة، وفصّه اللامع، يرويان أناقتك دون الحاجة إلى كلمات.
+قطعة تُكمّل أنوثتك، وتُعبّر عن ذوقك بكل رقي
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 510$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> قلادة ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/قلادة ذهب عيار 18 (2).webp" data-price="510" data-title="قلادة على شكل زهرة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond swiper-slide" data-id="14">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="قلادة الماس" class="product-img" src="images/عقد الماس مربع.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">قلادة الماس مربع </h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+قلادة ألماس مربع ( نوع الألماس SI-وزن الألماس: 0.81 )
+عقد مربع مزين بفصوص الألماس على شكل مربع عيار 18 قيراط، مشغول بحرفية عالية وإتقان حتى يلائم جاذبيتك ارتديه في المناسبات الخاصة والأعراس على فستان ذو لون أحمر فاقع مع تسريحة شعر متدلية تسحر الحضور.
+تفاصيل القطعة:
+لون الذهب: أبيض.
+وزن القطعة: 2.79 جرام / وزن الألماس: 0.81 قيراط.
+نقاوة الذهب: 18 قيراط.
+قياسات القطعة: طول السلسال 22.5 سم.
+نوع الفصوص المستخدمة: مزين بفصوص ألماس من نوع SI وهو الألماس ذو الشوائب القليلة ويعتبر الأفضل من حيث النقاوة.
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 3,800$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> قلادة ألماس </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/عقد الماس مربع.webp" data-price="3,800" data-title="قلادة على شكل زهرة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="15">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="حلق ذهب " class="product-img" src="images/حلق هندي عيار21.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">حلق ذهب هندي</h3>
+<p> عيار 21 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+        حلق هندي فريد من نوعه صُنع من ذهب عيار 21 قيراط و يتميز هذا الحلق بتصميمه الأنيق والمتقن و يزن 12.1 جرام مما يمنحه الوزن المثالي والراحة و اشتري في قطعة مجوهرات تدوم طويلاً وتحمل القيمة الثقافية للتراث الهندي.
+يتميز بتفاصيل هندية مذهلة وتصميم فريد يجعله قطعة فريدة من نوعها.
+مصنوع من ذهب عيار 21 قيراط الذي يعطيه لمعانًا رائعًا ويتحمل اختبار الزمن.
+يوفر توازنًا مثاليًا بين الثقل والراحة عند ارتدائه.
+يمثل الذهب استثمارًا آمنًا ومرغوبًا، حيث يمكن أن يزيد قيمته مع مرور الوقت.
+يحمل القيم والتراث الثقافي للهند، مما يجعله هدية مثالية لمحبي الثقافة الهندية.
+يضيف لمسة من التميز والأناقة إلى أي مظهر.
+يعد هدية مثالية للمناسبات مثل الأعياد والأعراس والذكريات.
+يمزج بين الأصالة والحداثة مما يجعله مناسبًا للأشخاص الذين يهتمون بالموضة.
+الوزن : 12.1 جرام
+العيار : 21 قيراط
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 1,700$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> حلق ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/حلق هندي عيار21.webp" data-price="1,700" data-title="  حلق ذهب هندي">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond swiper-slide" data-id="16">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="قلادة ألماس " class="product-img" src="images/عقد ألماس قيراط 0.99.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">قلادة ألماس </h3>
+<p>قيراط 0.99  </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+عقد ألماس خالِد للنساء – مجوهرات فاخرة
+ارتقي بأناقتك مع عقد ماسي كلاسيكي يعكس الجمال والبريق. بتصميم متقن يجسد الأناقة الخالدة، يُعدّ هذا العقد إضافة راقية إلى مجموعة مجوهراتك، وتجسيداً للفخامة في أبهى صورها.
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 4,580$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> قلادة ألماس </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/عقد ألماس قيراط 0.99.webp" data-price=" 4,580" data-title="قلادة على شكل زهرة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="17">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ذهب " class="product-img" src="images/دبلة ذهب الزهور خاتم المتباعدة.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم الزهور المتباعدة  </h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+خاتم ذهب الزهور المتباعدة ( عيار 18 )
+لمسة من النعومة تحمل في طيّاتها فخامة لا تُقاوم…
+
+خاتم الزهور المتباعدة صُنعت من الذهب الخالص وزُيّنت بفصوص الزركون اللامعة التي تعكس الضوء برقة وأناقة. تصميم الزهور المتباعدة يمنح القطعة توازنًا ساحرًا بين البساطة والتميّز، ويُضيف على يدك حضورًا راقٍ لا يُغفل
+
+تفاصيل القطعة:
+
+
+نقاوة الذهب: 18 قيراط
+
+وزن القطعة: 2.6 \ 2.7 \ 2.8
+مقاس الخاتم : 12 ( امريكي 6 ) 
+
+الإضافة : مزين بفصوص الزركون
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 390$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/دبلة ذهب الزهور خاتم المتباعدة.webp" data-price="390" data-title=" خاتم ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="18">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ذهب " class="product-img" src="images/خاتم ذهب سوليتير.jpg"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم ذهب سوليتير</h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+خاتم ذهب سوليتير ( عيار 18 )
+خاتم ذهب ناعم
+خاتم سولتير أنيق من الذهب عيار 18 ، بتصميم فاخر يزدان بفصوص الزركون متعددة الألوان . قطعة مميزة ، تناسب كل إطلالة ، وقابلة للتعديل لمزيد من الراحة .
+تفاصيل القطعة :
+نقاوة الذهب : 18 قيراط
+وزن القطعة : 1.9
+الإضافة : مزين بفصوص الزركون متعدد الألوان
+تفاصيل إضافية : مقاس الخاتم 6.9 أمريكي
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 258$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ذهب سوليتير.jpg" data-price="258" data-title=" خاتم ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="19">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ذهب " class="product-img" src="images/خاتم ذهب براند.png"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم ذهب براند</h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+خاتم ذهب براند ( عيار 18 )
+
+
+خاتم ذهب براند بالذهب الخالص ، بتصميم عصري يشبه سوار الساعة الفاخر ليمنحك إحساساً بالفخامة كلما نظرت إليه. قطعة تتحدث عن الذوق الراقي، صنعت لتُلفت وتُخلّد في ذاكرتك ومَن حولك. اقتنيه الآن وتألق بتفرّد لا يشبه سواك.
+
+تفاصيل القطعة:
+
+نقاوة الذهب: 18 قيراط
+
+وزن القطعة: 2.4 
+
+مقاس الخاتم : امريكي 7 \  مقاس الخاتم : امريكي6 
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 320$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ذهب براند.png" data-price="320" data-title=" خاتم ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="20">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ذهب " class="product-img" src="images/خاتم ذهب بفصوص الزركون.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم بفصوص الزركون</h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+خاتم ذهب بفصوص الزركون ( عيار 18 )
+
+
+لها، لمن تسكن قلبك وتضيء أيامك... اختر خاتم الذهب المزَيَّن بفصوص الزركون، قطعة تنبض رقة وجمالًا، كما تنبض هي في حياتك حبًا ودفئًا. قطعة لا تليق إلا بأنثى استثنائية، حضورها لا يُشبه أحد، وبريقها لا يُطفأ.. قدّم لها ما يليق بيدٍ احتوتك، اجعلها تتألّق بثقة، وتتميّز بذوق لا يُجارى... لأنك حين تختار لها الذهب، فأنت تختار أن تقول: "أنتِ الأجمل، دائماً".
+
+تفاصيل القطعة:
+نقاوة الذهب: 18 قيراط
+
+وزن القطعة: 1.5
+
+مقاس الخاتم: 7.5 امريكي 
+
+الإضافة : مزين بفصوص الزركون
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 215$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ذهب بفصوص الزركون.webp" data-price="215" data-title=" خاتم ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 diamond swiper-slide" data-id="21">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="عقد ألماس " class="product-img" src="images/عقد الماس4.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">عقد ألماس </h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+عقد ألماس فاخر مع قطعة مركزية وشراشير متدلية من الألماس
+
+تألقي بالفخامة مع هذا العقد الرائع المصنوع من ذهب عيار 18 قيراط، ومرصع بقطعة ألماس مركزية تتدلى منها شراشير صغيرة من الألماس لتضفي لمعة وأناقة لا مثيل لها.
+
+تصميم متقن يمنح العنق إشراقة متجددة مع كل حركة، مثالي للمناسبات الخاصة والسهرة الفاخرة.
+
+التفاصيل:
+
+العيار: ذهب 18 قيراط
+
+وزن الذهب: 4 غرام
+
+وزن الألماس: 0.75 قيراط (قطعة رئيسية + شراشير)
+
+التصميم: قطعة مركزية مع شراشير متدلية
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر :  3,450$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> قلادة ألماس </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/عقد الماس4.webp" data-price=" 3,450" data-title="قلادة على شكل زهرة">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="22">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="خاتم ذهب " class="product-img" src="images/خاتم ذهب قلب.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">خاتم ذهب قلب</h3>
+<p> عيار 18 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+ارتقِ بذوقك إلى قمّة الأناقة مع هذا الخاتم الذهبي الراقي، بتصميم قلب ينبض بالحب ومُرصّع بفصوص الزركون اللامعة التي تعكس سحر الضوء في كل زاوية. قطعة تنطق بالأنوثة والنعومة، وتُجسّد لحظة حب خالدة. اقتنيه الآن وامنحي نفسك أو من تحبين لمسة فخامة لا تُقاوم، لأنّكِ تستحقين التميّز بلا تردّد.
+تفاصيل القطعة:
+نقاوة الذهب: 18 قيراط
+وزن القطعة: 1.9
+مقاس الخاتم: 7.5 امريكي 
+الإضافة : مزين بفصوص الزركون
+
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 220$ </span>
+<span class="price-old">270$</span>   
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> خاتم ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/خاتم ذهب قلب.webp" data-price="220" data-title=" خاتم ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="23">
+<div class="card overflow-hidden">
+<div class="quick-icons">
+<a class="quick-view-btn" data-bs-toggle="modal" href="#quick-product">
+<i class="fa-solid fa-magnifying-glass"></i>
+</a>
+<!-- زر المفضلة -->
+<button class="favorite-btn btn p-0 border-0 bg-transparent" type="button">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+<!-- صورة المنتج -->
+<img alt="سبيكة ذهب " class="product-img" src="images/سبيكة ذهب )2( PAMP سويسري وزن 50 جرام عيار 24 قيراط.webp"/>
+<div class="product-info">
+<!-- اسم المنتج -->
+<h3 class="product-title">سبيكة ذهب سويسرية</h3>
+<p> عيار 24 </p>
+<!-- الوصف (مخفي يظهر في المودال) -->
+<p class="product-description d-none">
+سبيكة ذهب PAMP سويسري وزن 50 جرام عيار 24 قيراط
+بأعلى درجات النقاء
+حكاية القطعة:
+
+تعتبر سبائك بامب من أفضل السبائك السويسرية الموجودة في السوق، حيث يتم إنتاج السبائك الذهبية الجميلة هذه من قبل مصفاة (PAMP - اختصاراً لـProduits Artistiques Metauz Precieux) في سويسرا، يتميز الجزء الأمامي من السبيكة بصورة محفورة للسيدة فورتونا، في حين يحتوي الجزء الخلفي من السبيكة على الوزن والدقة والعلامة التجارية والرقم التسلسلي.
+
+السبيكة مصنوعة من الذهب الصافي بأعلى درجات النقاء 24 قيراط ونسبتها 999.9. اشتريها وادخرها لمستقبلك ومستقبل عائلتك.
+
+تفاصيل القطعة:
+
+وزن القطعة: 50 جرام.
+نقاوة الذهب: 24 قيراط.
+      </p>
+<!-- التقييم -->
+<div class="stars mb-2">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</div>
+<!-- السعر -->
+<div class="price mb-2">
+<span class="product-price">السعر : 6,000$ </span>
+</div>
+<!-- التصنيف (مخفي - يظهر في المودال) -->
+<span class="product-category d-none"> سبيكة ذهب </span>
+<!-- زر إضافة للسلة -->
+<button class="btn btn-danger w-100 add-to-cart" data-img="images/سبيكة ذهب )2( PAMP سويسري وزن 50 جرام عيار 24 قيراط.webp" data-price="6,000$" data-title=" سبيكة ذهب ">
+<i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+<!-- end new product -->
+<!-- start اعلانات -->
+<section class="ads">
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 gap-2 flex-md-nowrap m-2 w-120">
+<div class="col ad position-relative d-flex justify-content-center overflow-hidden p-0">
+<div class="overlay"></div>
+<img alt="خواتم" src="images/front.png"/>
+<div class="ad-info">
+<h3>خواتم</h3>
+<p>تجد هنا كل ما ترغبه من خواتم الذهب</p>
+<a class="btn btn-danger" href="Rings.html">تسوق الآن</a>
+</div>
+</div>
+<div class="col ad position-relative d-flex justify-content-center overflow-hidden p-0">
+<div class="overlay"></div>
+<img alt="اطقم ذهب" src="images/طقم ذهب الزهرة1.jpg"/>
+<div class="ad-info">
+<h3>اطقم ذهب</h3>
+<p>تجد هنا كل ما ترغبه من اطقم الذهب</p>
+<a class="btn btn-danger" href="set.html">تسوق الآن</a>
+</div>
+</div>
+<!-- 
+      <div class="col ad position-relative d-flex justify-content-center overflow-hidden p-0">
+        <div class="overlay"></div>
+        <img src="images/تصميم اسواره ذهب بالاسم للاطفال.webp" alt="">
+        <div class="ad-info">
+          <h3>مجوهرات اطفال</h3>
+          <p>كل ما تريده لإهداء الاطفال من المجوهرات  </p>
+          <a href="kids.html" class="btn btn-danger">تسوق الآن</a>
+        </div>
+      </div> -->
+</div>
+</div>
+</section>
+<!-- start week end products -->
+<section class="week-products">
+<div class="container">
+<h4 class="mini-title">الخصومات الاسبوعية</h4>
+<div class="row week-row">
+<!-- المنتج الأول -->
+<div class="col">
+<a href="product.html?id=22">
+<div class="products-sm d-flex align-items-center">
+<img alt="خاتم ذهب قلب" class="img-fluid" src="images/خاتم ذهب قلب(3).webp"/>
+<div class="product-info">
+<p>خاتم ذهب على شكل قلب</p>
+<span class="price_old">270$</span>   
+                  <!--فاصل بين الارقام-->
+<span class="price_new">220$</span>
+</div>
+</div>
+</a>
+</div>
+<!-- المنتج الثاني -->
+<div class="col">
+<a href="product.html?id=49">
+<div class="products-sm d-flex align-items-center">
+<img alt=" تعليقة بحرف B بفصوص الزركون" class="img-fluid" src="images/عليقة ذهب حرف B مزينة بفصوص الزركون.webp"/>
+<div class="product-info">
+<p>  تعليقة ذهب حرف B</p>
+<span class="price_old">180$</span>    
+<span class="price_new">150$</span>
+</div>
+</div>
+</a>
+</div>
+<!-- المنتج الثالث -->
+<div class="col">
+<a href="product.html?id=24">
+<div class="products-sm d-flex align-items-center">
+<img alt=" طقم الذهب الدمعة" class="img-fluid" src="images/طقم الذهب الدمعة 1.jpg"/>
+<div class="product-info">
+<p>طقم  ذهب "الدمعة" </p>
+<span class="price_old">830$</span>  
+             
+              <span class="price_new">720$</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- end week end products -->
+<!-- start footer -->
+<footer>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+<div class="col f1 mb-3">
+<img alt="logo" class="w-50" src="images/empty logo.png"/>
+<!-- نص بما يخص المتجر -->
+<!-- <p class="">
+متجرنا يقدم الجودة العالية وسرعة تلبية طلبات الزبائن
+</p> -->
+<!-- يمنع دخول النقاطli داخل ال  -->
+<ul class="navbar-nav">
+<li><i class="fa-solid fa-location-dot"></i>سوريا - دمشق </li>
+<li><i class="fa-solid fa-phone"></i> 09998841365  </li>
+<li><i class="fa-solid fa-envelope"></i> ElvioraJewelry@gmail.com </li>
+</ul>
+</div>
+<div class="col f2 mb-3">
+<h3>اهم الروابط</h3>
+<ul class="navbar-nav">
+<li><a href="index.html">الرئيسية</a></li>
+<li><a href="Collar_earr_brac.html">اكسسوارات</a></li>
+<li><a href="Rings.html">خواتم</a></li>
+<li><a href="set.html"> اطقم</a></li>
+<li><a href="diversified.html">منوع </a></li>
+</ul>
+</div>
+<div class="col f3 mb-3">
+<h3> التصنيفات</h3>
+<ul class="navbar-nav">
+<li><a href="">ذهب</a></li>
+<li><a href="">ألماس</a></li>
+<li><a href="">فضة</a></li>
+</ul>
+</div>
+<div class="col f4 mb-3">
+  <h3>كن أول من يعرف</h3>
+  <p>اشترك لتصلك تشكيلاتنا الجديدة والعروض الحصرية مباشرة إلى بريدك.</p>
+  <form class="newsletter-form" novalidate>
+    <input class="form-control mb-3" name="email" type="email" placeholder="أدخل بريدك الإلكتروني" required>
+    <button class="btn btn-danger w-100" type="submit">اشترك الآن</button>
+    <div class="newsletter-message small mt-2" role="status"></div>
+  </form>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-6 d-flex justify-content-start"></div>
+<div class="col-md-6 d-flex align-items-center justify-content-end">
+<p class="m-0">جميع الحقوق المحفوظة © 2025 لمتجر ELVIORA لبيع المجوهرات</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- end footer -->
+<!-- start modal -->
+<div aria-hidden="true" class="modal fade" id="quick-product" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="modalTitle"></h5>
+<button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<div class="row row-cols-1 row-cols-md-2">
+<div class="col">
+<img alt="" class="img-fluid" id="modalImg" src=""/>
+<button class="btn btn-primary w-100 mt-2">كافة التفاصيل</button>
+<button class="btn btn-outline-success w-100 mt-2" id="tryOnBtn">جرّبي بالكاميرا</button>
+</div>
+<div class="col">
+<h1 class="modal-title fs-5 mt-2 my-3" id="modalTitle2"></h1>
+<p class="product-description" id="modalDesc"></p>
+<div class="price mb-3">
+<span id="modalPrice"></span>
+</div>
+<div class="btns d-flex gap-2">
+<div>
+<div class="btn-group btns-quantity">
+<button class="btn increase" type="button">+</button>
+<button class="btn qty-btn" disabled="" type="button">1</button>
+<button class="btn decrease" type="button">-</button>
+</div>
+</div>
+<div class="d-flex gap-1 add-btn">
+<button class="btn btn-danger add-to-cart">إضافة الى السلة</button>
+<button class="btn btn-success buy-now">شراء الآن</button>
+</div>
+</div>
+<hr/>
+<div class="gategory mb-3">
+<span>التصنيفات:</span>
+<a href="#" id="modalCategory"></a>
+<!-- من اجل المشاركة على مواقع التواصل الاجتماعي -->
+<div class="share">
+<span>المشاركة:</span>
+<div class="share-icons d-inline-flex gap-2">
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-whatsapp"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin-in"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end modal -->
+<!-- start fav -->
+<div aria-labelledby="favLabel" class="offcanvas offcanvas-start" id="fav" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="favLabel">المفضلة</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<ul class="list-unstyled" id="favList"></ul>
+<p class="alert alert-info text-center d-none" id="favCountText">0 منتجات</p>
+</div>
+</div>
+<!-- end fav -->
+<!-- cart -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas سلة المشتريات -->
+<div aria-labelledby="cartLabel" class="offcanvas offcanvas-end" id="cart" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="cartLabel">سلة المشتريات</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="row row-cols-1 row-mini-card"></div>
+<p class="alert alert-danger p-3 my-3 text-center" id="cartTotal">مجموع المنتجات: 0$.</p>
+<button class="btn btn-primary w-100 mb-2" id="viewCartBtn">عرض السلة</button>
+<button class="btn btn-danger w-100" id="checkoutBtn">إتمام الطلب</button>
+</div>
+</div>
+<!-- log in -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas تسجيل الدخول -->
+<div aria-labelledby="loginLabel" class="offcanvas offcanvas-start" id="login" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="loginLabel">تسجيل الدخول</h5>
+<button aria-label="إغلاق" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mini-login">
+<form id="loginForm">
+<div class="mb-3">
+<label class="form-label" for="loginEmail">اسم المستخدم أو البريد</label>
+<input class="form-control" id="loginEmail" placeholder="example@email.com" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="loginPassword">كلمة المرور</label>
+<input class="form-control" id="loginPassword" placeholder="••••••" required="" type="password"/>
+</div>
+<div class="mb-3 form-check">
+<input class="form-check-input" id="rememberMe" type="checkbox"/>
+<label class="form-check-label" for="rememberMe">تذكر بياناتي</label>
+</div>
+<button class="btn btn-primary w-100" type="submit">تسجيل الدخول</button>
+</form>
+<!-- ملاحظة: عرض اسم المستخدم يتم في هيدر الصفحة بعد تسجيل الدخول -->
+<!-- مابعد تسجيل الدخول -->
+<!-- <div id="userBox" class="d-none text-center">
+  <i class="fa-solid fa-user-circle fa-4x mb-2"></i>
+  <h5 id="userName" class="mb-1"></h5>
+  <p class="text-muted">تم تسجيل الدخول بنجاح</p>
+
+  <button id="logoutBtn" class="btn btn-danger w-100 mt-3">
+    تسجيل الخروج
+  </button>
+</div> -->
+<!-- .......... -->
+<div class="alert alert-danger my-3 text-center d-none" id="loginError">
+        البريد أو كلمة المرور غير صحيحة
+      </div>
+<hr/>
+<div class="text-center mt-3">
+<i class="fa-regular fa-user fa-5x"></i>
+<p class="mt-2">لا يوجد لديك حساب؟</p>
+<a class="btn btn-danger w-100 text-white" href="register.html">إنشاء حساب جديد</a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Bootstrap Bundle (ضروري للأوفكانفاس) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Auth/session UI -->
+<script src="js/auth.js"></script>
+<script src="js/tryon.js"></script>
+<!-- ملف مشروعك الأساسي -->
+<script src="js/gold.js"></script>
+<script src="js/dynamic-ratings.js"></script>
+<!-- ملف العملة -->
+<script src="js/currency.js"></script>
+<script src="js/chatbot_widget.js?v=20260209"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+
+<html dir="rtl" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title> Elviora store  </title>
+<link href="images/logo1.jpg" rel="icon"/> <!---تكملة مسار الصوؤة يلي بدي حطها ايقونة-->
+<link href="css/all.min.css" rel="stylesheet"/>
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet"/>
+</link></head>
+<body class="reg-logi">
+<!-- start header -->
+<header>
+<div class="top-header py-2">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<a href=""> <!---لوغو قابل للضغط-->
+<img alt="logo" src="images/empty logo.png" width="100"/>
+</a>
+</div>
+<div class="col-4 col-md-2 mt-2 col-md-4">
+<input class="form-control" placeholder="اكتب اسم المنتج للبحث عنه" type="text"/>
+</div>
+<div class="col-md-4 left-header d-flex align-items-center d-none d-lg-flex justify-content-end">
+<a class="position-relative aria-controls=" data-bs-toggle="offcanvas" href="#cart" offcanvasexample"="" role="button">
+<span> السلة</span>
+<i class="fa-solid fa-cart-shopping"></i>
+<!-- عداد السلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="cartCount">
+    0
+  </span>
+</a>
+<a aria-controls="offcanvasExample" data-bs-toggle="offcanvas" href="#login" role="button">
+<span class="js-login-label"> الدخول</span><span class="js-user-name d-none" data-user-name=""></span>
+<i class="fa-solid fa-user"></i>
+</a>
+<a aria-controls="offcanvasCurrency" data-bs-toggle="offcanvas" href="#currency" role="button">
+<span> تحويل العملة</span>
+<i class="fa-solid fa-money-bill-transfer"></i>
+</a>
+<!-- زر القلب في الهيدر -->
+<a aria-controls="offcanvasExample" class="position-relative" data-bs-toggle="offcanvas" href="#fav" role="button">
+<span>المفضلة</span>
+<i class="fa-solid fa-heart"></i>
+<!-- عدّاد المفضلة -->
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="favCount">
+                 0
+          </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="buttom-header">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler menu-icon" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#cart" type="button">
+<i class="fa-solid fa-cart-shopping"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#login" type="button">
+<i class="fa-solid fa-user"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#currency" type="button">
+<i class="fa-solid fa-money-bill-transfer"></i>
+</button>
+<button class="navbar-toggler menu-icon" data-bs-toggle="offcanvas" href="#fav" type="button">
+<i class="fa-solid fa-heart"></i>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-3 mb-lg-0">
+<li class="nav-item">
+<a aria-current="page" class="nav-link active" href="index.html">الرئيسية</a>
+</li>
+<!-- Dropdown اكسسوارات -->
+<li class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="accessoriesDropdown" role="button">
+        اكسسوارات
+      </a>
+<ul aria-labelledby="accessoriesDropdown" class="dropdown-menu">
+<li><a class="dropdown-item" href="Collar_earr_brac.html">حلق</a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اطواق </a></li>
+<li><a class="dropdown-item" href="Collar_earr_brac.html">اساور</a></li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="Rings.html">خواتم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="set.html">اطقم</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="diversified.html">منوع</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<!-- end header -->
+<div class="register-box">
+<h3><i class="fa-solid fa-user-plus"></i> إنشاء حساب جديد</h3>
+<form id="registerForm">
+<div class="mb-3">
+<label class="form-label">الاسم الكامل</label>
+<input class="form-control" id="fullName" name="name" placeholder="أدخل اسمك الكامل" required="" type="text"/>
+</div>
+<div class="mb-3">
+<label class="form-label">البريد الإلكتروني</label>
+<input class="form-control" id="email" name="email" placeholder="example@email.com" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label class="form-label">كلمة المرور</label>
+<input class="form-control" id="password" name="password" placeholder="••••••" required="" type="password"/>
+</div>
+<div class="mb-3">
+<label class="form-label">تأكيد كلمة المرور</label>
+<input class="form-control" id="confirmPassword" placeholder="أعد إدخال كلمة المرور" required="" type="password"/>
+</div>
+<div class="alert alert-danger d-none mt-3 text-center" id="registerError">حدث خطأ في إنشاء الحساب</div>
+<button class="btn btn-gold w-100" type="submit">إنشاء الحساب</button>
+</form>
+<div class="text-center mt-3">
+<p>لديك حساب بالفعل؟ <a class="text-decoration-none text-dark" href="index.html">تسجيل الدخول</a></p>
+</div>
+</div>
+<!-- مودال نجاح -->
+<div aria-hidden="true" class="modal fade" id="successModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content border-2 border-gold">
+<div class="modal-header">
+<h5 class="modal-title"> تم إنشاء الحساب</h5>
+<button aria-label="إغلاق" class="btn-close btn-close-white" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body text-center">
+<p class="fs-5">أهلاً بك <br/>تم إنشاء حسابك بنجاح.</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline-gold w-100" id="goHome">الانتقال للصفحة الرئيسية</button>
+</div>
+</div>
+</div>
+</div>
+<!-- start footer -->
+<footer>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+<div class="col f1 mb-3">
+<img alt="logo" class="w-50" src="images/empty logo.png"/>
+<!-- نص بما يخص المتجر -->
+<!-- <p class="">
+متجرنا يقدم الجودة العالية وسرعة تلبية طلبات الزبائن
+</p> -->
+<!-- يمنع دخول النقاطli داخل ال  -->
+<ul class="navbar-nav">
+<li><i class="fa-solid fa-location-dot"></i>سوريا - دمشق </li>
+<li><i class="fa-solid fa-phone"></i> 09998841365  </li>
+<li><i class="fa-solid fa-envelope"></i> ElvioraJewelry@gmail.com </li>
+</ul>
+</div>
+<div class="col f2 mb-3">
+<h3>اهم الروابط</h3>
+<ul class="navbar-nav">
+<li><a href="index.html">الرئيسية</a></li>
+<li><a href="Collar_earr_brac.html">اكسسوارات</a></li>
+<li><a href="Rings.html">خواتم</a></li>
+<li><a href="set.html"> اطقم</a></li>
+<li><a href="diversified.html">منوع </a></li>
+</ul>
+</div>
+<div class="col f3 mb-3">
+<h3> التصنيفات</h3>
+<ul class="navbar-nav">
+<li><a href="">ذهب</a></li>
+<li><a href="">ألماس</a></li>
+<li><a href="">فضة</a></li>
+</ul>
+</div>
+<div class="col f4 mb-3">
+  <h3>كن أول من يعرف</h3>
+  <p>اشترك لتصلك تشكيلاتنا الجديدة والعروض الحصرية مباشرة إلى بريدك.</p>
+  <form class="newsletter-form" novalidate>
+    <input class="form-control mb-3" name="email" type="email" placeholder="أدخل بريدك الإلكتروني" required>
+    <button class="btn btn-danger w-100" type="submit">اشترك الآن</button>
+    <div class="newsletter-message small mt-2" role="status"></div>
+  </form>
+</div>
+</form>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-md-6 d-flex justify-content-start"></div>
+<div class="col-md-6 d-flex align-items-center justify-content-end">
+<p class="m-0">جميع الحقوق المحفوظة © 2025 لمتجر ELVIORA لبيع المجوهرات</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- end footer -->
+<!-- start modal -->
+<div aria-hidden="true" class="modal fade" id="quick-product" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="modalTitle"></h5>
+<button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<div class="row row-cols-1 row-cols-md-2">
+<div class="col">
+<img alt="" class="img-fluid" id="modalImg" src=""/>
+<button class="btn btn-primary w-100 mt-2">كافة التفاصيل</button>
+<button class="btn btn-outline-success w-100 mt-2" id="tryOnBtn">جرّبي بالكاميرا</button>
+</div>
+<div class="col">
+<h1 class="modal-title fs-5 mt-2 my-3" id="modalTitle2"></h1>
+<p class="product-description" id="modalDesc"></p>
+<div class="price mb-3">
+<span id="modalPrice"></span>
+</div>
+<div class="btns d-flex gap-2">
+<div>
+<div class="btn-group btns-quantity">
+<button class="btn increase" type="button">+</button>
+<button class="btn qty-btn" disabled="" type="button">1</button>
+<button class="btn decrease" type="button">-</button>
+</div>
+</div>
+<div class="d-flex gap-1 add-btn">
+<button class="btn btn-danger add-to-cart">إضافة الى السلة</button>
+<button class="btn btn-success buy-now">شراء الآن</button>
+</div>
+</div>
+<hr/>
+<div class="gategory mb-3">
+<span>التصنيفات:</span>
+<a href="#" id="modalCategory"></a>
+<!-- من اجل المشاركة على مواقع التواصل الاجتماعي -->
+<div class="share">
+<span>المشاركة:</span>
+<div class="share-icons d-inline-flex gap-2">
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-whatsapp"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin-in"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- end modal --><!-- start fav -->
+<div aria-labelledby="favLabel" class="offcanvas offcanvas-start" id="fav" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="favLabel">المفضلة</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<ul class="list-unstyled" id="favList"></ul>
+<p class="alert alert-info text-center d-none" id="favCountText">0 منتجات</p>
+</div>
+</div>
+<!-- end fav -->
+<!-- نافذة تحويل العملة -->
+<div aria-labelledby="currencyLabel" class="offcanvas offcanvas-end" id="currency" tabindex="-1">
+<div class="offcanvas-header">
+<h5 id="currencyLabel">تحويل العملة</h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mb-3">
+<label class="form-label">سعر الدولار الحالي (ل.س):</label>
+<input class="form-control" id="usdRate" readonly="" type="text"/>
+<small class="text-muted">يتم تحديث السعر تلقائياً عند فتح النافذة.</small>
+</div>
+<div class="mb-3">
+<label class="form-label" for="usdAmount">المبلغ بالدولار (USD):</label>
+<input class="form-control" id="usdAmount" placeholder="مثال: 150" type="number"/>
+</div>
+<button class="btn btn-primary w-100 mb-3" id="btnUsdToSyp">تحويل إلى ليرة</button>
+<div class="mb-3">
+<label class="form-label" for="sypAmount">المبلغ بالليرة السورية (SYP):</label>
+<input class="form-control" id="sypAmount" placeholder="مثال: 1777500" type="number"/>
+</div>
+<button class="btn btn-primary w-100 mb-3" id="btnSypToUsd">تحويل إلى دولار</button>
+<button class="btn btn-outline-secondary w-100" id="btnClear">مسح</button>
+<div class="alert d-none mt-3" id="result"></div>
+<hr/>
+<a class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2" href="https://www.sp-today.com//" target="_blank">
+<i class="fa-solid fa-globe"></i>
+      الليرة اليوم - أسعار الذهب والدولار
+    </a>
+</div>
+</div>
+<!-- end -->
+<!-- cart -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas سلة المشتريات -->
+<div aria-labelledby="cartLabel" class="offcanvas offcanvas-end" id="cart" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="cartLabel">سلة المشتريات</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="row row-cols-1 row-mini-card"></div>
+<p class="alert alert-danger p-3 my-3 text-center" id="cartTotal">مجموع المنتجات: 0$.</p>
+<button class="btn btn-primary w-100 mb-2" id="viewCartBtn">عرض السلة</button>
+<button class="btn btn-danger w-100" id="checkoutBtn">إتمام الطلب</button>
+</div>
+</div>
+<!-- log in -->
+<!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas تسجيل الدخول -->
+<div aria-labelledby="loginLabel" class="offcanvas offcanvas-start" id="login" tabindex="-1">
+<div class="offcanvas-header">
+<h5 class="offcanvas-title" id="loginLabel">تسجيل الدخول</h5>
+<button aria-label="إغلاق" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body">
+<div class="mini-login">
+<form id="loginForm">
+<div class="mb-3">
+<label class="form-label" for="loginEmail">اسم المستخدم أو البريد</label>
+<input class="form-control" id="loginEmail" placeholder="example@email.com" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="loginPassword">كلمة المرور</label>
+<input class="form-control" id="loginPassword" placeholder="••••••" required="" type="password"/>
+</div>
+<div class="mb-3 form-check">
+<input class="form-check-input" id="rememberMe" type="checkbox"/>
+<label class="form-check-label" for="rememberMe">تذكر بياناتي</label>
+</div>
+<button class="btn btn-primary w-100" type="submit">تسجيل الدخول</button>
+</form>
+<!-- مابعد تسجيل الدخول -->
+<!-- <div id="userBox" class="d-none text-center">
+  <i class="fa-solid fa-user-circle fa-4x mb-2"></i>
+  <h5 id="userName" class="mb-1"></h5>
+  <p class="text-muted">تم تسجيل الدخول بنجاح</p>
+
+  <button id="logoutBtn" class="btn btn-danger w-100 mt-3">
+    تسجيل الخروج
+  </button>
+</div> -->
+<!-- ............ -->
+<div class="alert alert-danger my-3 text-center d-none" id="loginError">
+        البريد أو كلمة المرور غير صحيحة
+      </div>
+<hr/>
+<div class="text-center mt-3">
+<i class="fa-regular fa-user fa-5x"></i>
+<p class="mt-2">لا يوجد لديك حساب؟</p>
+<a class="btn btn-danger w-100 text-white" href="register.html">إنشاء حساب جديد</a>
+</div>
+</div>
+</div>
+</div>
+<!-- يسبب تعليق عند الاغلاق -->
+<!-- <script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = new URLSearchParams();
+  data.append("action", "login");
+  data.append("email", document.getElementById("loginEmail").value);
+  data.append("password", document.getElementById("loginPassword").value);
+
+  fetch("actions/auth.php", {
+    method: "POST",
+    body: data
+  })
+  .then(res => res.text())
+  .then(response => {
+    if(response === "LOGIN_SUCCESS"){
+      alert("✅ تم تسجيل الدخول بنجاح");
+      location.reload();
+    } else {
+      document.getElementById("loginError").classList.remove("d-none");
+    }
+});
+});
+</script> -->
+<script crossorigin="anonymous" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/gold.js"></script>
+<script src="js/newsletter.js"></script>`n<script src="js/currency.js"></script>`n<script src="js/chatbot_widget.js?v=20260209"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

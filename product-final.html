@@ -1,0 +1,499 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طھظپط§طµظٹظ„ ط§ظ„ظ…ظ†طھط¬ - Elviora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            background: #f7f2e9; 
+            font-family: 'Cairo', sans-serif; 
+        }
+        .product-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 15px;
+            background: #eee;
+            border: 3px solid #f0f0f0;
+        }
+        .btn {
+            padding: 12px 24px;
+            margin: 8px 5px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .loading-spinner {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+        }
+        .error-message {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #f5c6cb;
+        }
+        .success-message {
+            color: #155724;
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+        }
+        .product-specs {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .debug-panel {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            border-left: 4px solid #007bff;
+        }
+        .rating-stars {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+        .similar-products {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Header Navigation -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <nav class="d-flex align-items-center gap-3">
+                    <a href="index.html" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-home"></i> ط§ظ„ط±ط¦ظٹط³ظٹط©
+                    </a>
+                    <span class="text-muted">/</span>
+                    <span id="breadcrumbCategory">ط§ظ„ظ…ظ†طھط¬ط§طھ</span>
+                    <span class="text-muted">/</span>
+                    <span id="breadcrumbProduct">طھظپط§طµظٹظ„ ط§ظ„ظ…ظ†طھط¬</span>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-spinner">
+            <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</span>
+            </div>
+            <h4>ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ طھظپط§طµظٹظ„ ط§ظ„ظ…ظ†طھط¬...</h4>
+            <p class="text-muted">ظٹط±ط¬ظ‰ ط§ظ„ط§ظ†طھط¸ط§ط± ظ‚ظ„ظٹظ„ط§ظ‹</p>
+        </div>
+        
+        <!-- Error State -->
+        <div id="errorState" class="error-message" style="display: none;">
+            <h4><i class="fa-solid fa-exclamation-triangle"></i> ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬</h4>
+            <p id="errorMessage">ط­ط¯ط« ط®ط·ط£ ط؛ظٹط± ظ…طھظˆظ‚ط¹</p>
+            <div class="mt-3">
+                <button class="btn btn-primary" onclick="location.reload()">
+                    <i class="fa-solid fa-refresh"></i> ط¥ط¹ط§ط¯ط© ط§ظ„ظ…ط­ط§ظˆظ„ط©
+                </button>
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-right"></i> ط§ظ„ط¹ظˆط¯ط© ظ„ظ„ط±ط¦ظٹط³ظٹط©
+                </a>
+            </div>
+        </div>
+
+        <!-- Product Content -->
+        <div id="productContent" style="display: none;">
+            <div class="product-container">
+                <div class="row">
+                    <!-- Product Image -->
+                    <div class="col-lg-6 mb-4">
+                        <img id="productImage" class="product-image" src="" alt="">
+                        <div class="mt-3 text-center">
+                            <small class="text-muted">ط§ظ†ظ‚ط± ط¹ظ„ظ‰ ط§ظ„طµظˆط±ط© ظ„ظ„طھظƒط¨ظٹط±</small>
+                        </div>
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="col-lg-6">
+                        <h1 id="productName" class="mb-3">ط§ط³ظ… ط§ظ„ظ…ظ†طھط¬</h1>
+                        
+                        <!-- Rating -->
+                        <div class="mb-3">
+                            <div class="rating-stars" id="productRating">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span id="ratingText" class="text-muted ms-2">ظ„ط§ طھظˆط¬ط¯ طھظ‚ظٹظٹظ…ط§طھ</span>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="price-tag" id="productPrice">
+                            ط§ظ„ط³ط¹ط±: $0
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <h5><i class="fa-solid fa-info-circle"></i> ط§ظ„ظˆطµظپ:</h5>
+                            <p id="productDescription" class="text-muted">ظˆطµظپ ط§ظ„ظ…ظ†طھط¬ ط³ظٹط¸ظ‡ط± ظ‡ظ†ط§...</p>
+                        </div>
+
+                        <!-- Specifications -->
+                        <div class="product-specs" id="productSpecs">
+                            <h5><i class="fa-solid fa-list"></i> ط§ظ„ظ…ظˆط§طµظپط§طھ:</h5>
+                            <!-- ط³ظٹطھظ… ظ…ظ„ط¤ظ‡ط§ ط¯ظٹظ†ط§ظ…ظٹظƒظٹط§ظ‹ -->
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <button class="btn btn-danger btn-lg" id="addToCartBtn">
+                                <i class="fa-solid fa-cart-plus"></i> ط¥ط¶ط§ظپط© ظ„ظ„ط³ظ„ط©
+                            </button>
+                            <button class="btn btn-success btn-lg" id="buyNowBtn">
+                                <i class="fa-solid fa-shopping-bag"></i> ط´ط±ط§ط، ط§ظ„ط¢ظ†
+                            </button>
+                            <button class="btn btn-outline-danger" id="favoriteBtn">
+                                <i class="fa-regular fa-heart"></i> ط§ظ„ظ…ظپط¶ظ„ط©
+                            </button>
+                            <button class="btn btn-outline-secondary" onclick="history.back()">
+                                <i class="fa-solid fa-arrow-right"></i> ط±ط¬ظˆط¹
+                            </button>
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <i class="fa-solid fa-truck text-primary fa-2x mb-2"></i>
+                                <p class="small">ط´ط­ظ† ظ…ط¬ط§ظ†ظٹ</p>
+                            </div>
+                            <div class="col-4">
+                                <i class="fa-solid fa-shield-alt text-success fa-2x mb-2"></i>
+                                <p class="small">ط¶ظ…ط§ظ† ط§ظ„ط¬ظˆط¯ط©</p>
+                            </div>
+                            <div class="col-4">
+                                <i class="fa-solid fa-undo text-info fa-2x mb-2"></i>
+                                <p class="small">ط¥ط±ط¬ط§ط¹ ظ…ط¬ط§ظ†ظٹ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Similar Products -->
+        <div id="similarProductsSection" class="similar-products" style="display: none;">
+            <h3 class="text-center mb-4">
+                <i class="fa-solid fa-gem"></i> ظ…ظ†طھط¬ط§طھ ظ…ط´ط§ط¨ظ‡ط©
+            </h3>
+            <div class="row" id="similarProductsContainer">
+                <!-- ط³ظٹطھظ… ظ…ظ„ط¤ظ‡ط§ ط¯ظٹظ†ط§ظ…ظٹظƒظٹط§ظ‹ -->
+            </div>
+        </div>
+        
+        <!-- Debug Panel -->
+        <div class="debug-panel">
+            <h6><i class="fa-solid fa-bug"></i> ظ…ط¹ظ„ظˆظ…ط§طھ ط§ظ„طھط´ط®ظٹطµ:</h6>
+            <div id="debugInfo">ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</div>
+        </div>
+    </div>
+
+    <script>
+        // ظ…طھط؛ظٹط±ط§طھ ط¹ط§ظ…ط©
+        let currentProduct = null;
+        let debugMode = true;
+        
+        // ط¹ظ†ط¯ طھط­ظ…ظٹظ„ ط§ظ„طµظپط­ط©
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('ًںڑ€ طµظپط­ط© ط§ظ„ظ…ظ†طھط¬ ط§ظ„ظ†ظ‡ط§ط¦ظٹط© ط¬ط§ظ‡ط²ط©');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || '1';
+            
+            updateDebugInfo(`ظ…ط¹ط±ظپ ط§ظ„ظ…ظ†طھط¬: ${productId}<br>ظˆظ‚طھ ط§ظ„ط¨ط¯ط،: ${new Date().toLocaleString('ar')}`);
+            
+            loadProduct(productId);
+        });
+        
+        function updateDebugInfo(info) {
+            if (debugMode) {
+                document.getElementById('debugInfo').innerHTML = info;
+            }
+        }
+        
+        function loadProduct(productId) {
+            console.log('ًں”„ ط¨ط¯ط، طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬:', productId);
+            
+            showLoadingState();
+            updateDebugInfo(`ط¬ط§ط±ظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬ ${productId}...<br>API: actions/get_product_verified.php`);
+            
+            fetch(`actions/get_product_verified.php?id=${productId}`)
+                .then(response => {
+                    console.log('ًں“، ط­ط§ظ„ط© ط§ظ„ط§ط³طھط¬ط§ط¨ط©:', response.status);
+                    updateDebugInfo(`ط­ط§ظ„ط© HTTP: ${response.status}<br>ط¬ط§ط±ظٹ طھط­ظ„ظٹظ„ ط§ظ„ط¨ظٹط§ظ†ط§طھ...`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('ًں“¦ ط§ظ„ط¨ظٹط§ظ†ط§طھ ط§ظ„ظ…ط³طھظ„ظ…ط©:', data);
+                    
+                    if (data.ok && data.product) {
+                        updateDebugInfo(`طھظ… طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬ ط¨ظ†ط¬ط§ط­<br>ط§ظ„ط§ط³ظ…: ${data.product.name}<br>ط§ظ„ط³ط¹ط±: $${data.product.price_usd}`);
+                        displayProduct(data.product);
+                        loadSimilarProducts();
+                    } else {
+                        throw new Error(data.error || 'ط§ظ„ظ…ظ†طھط¬ ط؛ظٹط± ظ…ظˆط¬ظˆط¯');
+                    }
+                })
+                .catch(error => {
+                    console.error('â‌Œ ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬:', error);
+                    updateDebugInfo(`ط®ط·ط£: ${error.message}<br>ظˆظ‚طھ ط§ظ„ط®ط·ط£: ${new Date().toLocaleString('ar')}`);
+                    showError(error.message);
+                });
+        }
+        
+        function showLoadingState() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('errorState').style.display = 'none';
+            document.getElementById('productContent').style.display = 'none';
+            document.getElementById('similarProductsSection').style.display = 'none';
+        }
+        
+        function showError(message) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            document.getElementById('productContent').style.display = 'none';
+            document.getElementById('similarProductsSection').style.display = 'none';
+            
+            document.getElementById('errorMessage').textContent = message;
+        }
+        
+        function displayProduct(product) {
+            console.log('âœ¨ ط¹ط±ط¶ ط§ظ„ظ…ظ†طھط¬:', product.name);
+            currentProduct = product;
+            
+            // ط¥ط®ظپط§ط، ط­ط§ظ„ط§طھ ط§ظ„طھط­ظ…ظٹظ„ ظˆط§ظ„ط®ط·ط£
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+            document.getElementById('productContent').style.display = 'block';
+            
+            // طھط­ط¯ظٹط« ط§ظ„ط¨ظٹط§ظ†ط§طھ ط§ظ„ط£ط³ط§ط³ظٹط©
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productDescription').textContent = product.description;
+            document.getElementById('productPrice').textContent = `ط§ظ„ط³ط¹ط±: $${product.price_usd}`;
+            
+            // طھط­ط¯ظٹط« ط§ظ„طµظˆط±ط©
+            const img = document.getElementById('productImage');
+            img.src = product.main_image || 'images/default-product.jpg';
+            img.alt = product.name;
+            img.onerror = function() {
+                this.src = 'images/default-product.jpg';
+            };
+            
+            // طھط­ط¯ظٹط« ط§ظ„طھظ‚ظٹظٹظ…ط§طھ
+            if (product.reviews && product.reviews.total > 0) {
+                displayRating(product.reviews.average, product.reviews.total);
+            }
+            
+            // طھط­ط¯ظٹط« ط§ظ„ظ…ظˆط§طµظپط§طھ
+            document.getElementById('productSpecs').innerHTML = `
+                <h5><i class="fa-solid fa-list"></i> ط§ظ„ظ…ظˆط§طµظپط§طھ:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong><i class="fa-solid fa-gem"></i> ط§ظ„ظ…ط§ط¯ط©:</strong> ${product.material_name || product.material}</li>
+                            <li><strong><i class="fa-solid fa-award"></i> ط§ظ„ط¹ظٹط§ط±:</strong> ${product.karat || 'ط؛ظٹط± ظ…ط­ط¯ط¯'}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong><i class="fa-solid fa-weight"></i> ط§ظ„ظˆط²ظ†:</strong> ${product.weight || 'ط؛ظٹط± ظ…ط­ط¯ط¯'} ط¬ط±ط§ظ…</li>
+                            <li><strong><i class="fa-solid fa-boxes"></i> ط§ظ„ظ…ط®ط²ظˆظ†:</strong> ${product.stock} ظ‚ط·ط¹ط©</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            // طھط­ط¯ظٹط« breadcrumb
+            document.getElementById('breadcrumbProduct').textContent = product.name;
+            document.getElementById('breadcrumbCategory').textContent = product.category_name || 'ط§ظ„ظ…ظ†طھط¬ط§طھ';
+            
+            // طھط­ط¯ظٹط« ط¹ظ†ظˆط§ظ† ط§ظ„طµظپط­ط©
+            document.title = product.name + ' - Elviora';
+            
+            // ط¥ط¹ط¯ط§ط¯ ط§ظ„ط£ط²ط±ط§ط±
+            setupButtons(product);
+            
+            updateDebugInfo(`ط§ظ„ظ…ظ†طھط¬ ظ…ط¹ط±ظˆط¶ ط¨ظ†ط¬ط§ط­<br>ط§ظ„ظ…ط®ط²ظˆظ†: ${product.stock}<br>ط§ظ„طھظ‚ظٹظٹظ…ط§طھ: ${product.reviews?.total || 0}`);
+            
+            console.log('âœ… طھظ… ط¹ط±ط¶ ط§ظ„ظ…ظ†طھط¬ ط¨ظ†ط¬ط§ط­');
+        }
+        
+        function displayRating(average, total) {
+            const stars = document.getElementById('productRating');
+            const ratingText = document.getElementById('ratingText');
+            
+            stars.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('i');
+                star.className = i <= Math.round(average) ? 'fa-solid fa-star' : 'fa-regular fa-star';
+                stars.appendChild(star);
+            }
+            
+            ratingText.textContent = `${average} (${total} طھظ‚ظٹظٹظ…)`;
+        }
+        
+        function loadSimilarProducts() {
+            fetch('actions/get_products.php?limit=4')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok && data.products && data.products.length > 0) {
+                        displaySimilarProducts(data.products.slice(0, 4));
+                        document.getElementById('similarProductsSection').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('ط®ط·ط£ ظپظٹ طھط­ظ…ظٹظ„ ط§ظ„ظ…ظ†طھط¬ط§طھ ط§ظ„ظ…ط´ط§ط¨ظ‡ط©:', error);
+                });
+        }
+        
+        function displaySimilarProducts(products) {
+            const container = document.getElementById('similarProductsContainer');
+            let html = '';
+            
+            products.forEach(product => {
+                html += `
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="${product.main_image || 'images/default-product.jpg'}" 
+                                 class="card-img-top" alt="${product.name}" 
+                                 style="height: 200px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">${product.name}</h6>
+                                <p class="card-text text-primary fw-bold">$${product.price_usd}</p>
+                                <a href="product-final.html?id=${product.id}" 
+                                   class="btn btn-outline-primary btn-sm mt-auto">
+                                   <i class="fa-solid fa-eye"></i> ط¹ط±ط¶ ط§ظ„طھظپط§طµظٹظ„
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function setupButtons(product) {
+            // ط²ط± ط¥ط¶ط§ظپط© ظ„ظ„ط³ظ„ط©
+            document.getElementById('addToCartBtn').onclick = function() {
+                if (product.stock > 0) {
+                    showSuccessMessage(`طھظ… ط¥ط¶ط§ظپط© "${product.name}" ط¥ظ„ظ‰ ط§ظ„ط³ظ„ط© ط¨ظ†ط¬ط§ط­!`);
+                    this.innerHTML = '<i class="fa-solid fa-check"></i> طھظ… ط§ظ„ط¥ط¶ط§ظپط©';
+                    this.classList.remove('btn-danger');
+                    this.classList.add('btn-success');
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fa-solid fa-cart-plus"></i> ط¥ط¶ط§ظپط© ظ„ظ„ط³ظ„ط©';
+                        this.classList.remove('btn-success');
+                        this.classList.add('btn-danger');
+                    }, 3000);
+                } else {
+                    alert('ط¹ط°ط±ط§ظ‹طŒ ظ‡ط°ط§ ط§ظ„ظ…ظ†طھط¬ ط؛ظٹط± ظ…طھظˆظپط± ظپظٹ ط§ظ„ظ…ط®ط²ظˆظ†');
+                }
+            };
+            
+            // ط²ط± ط´ط±ط§ط، ط§ظ„ط¢ظ†
+            document.getElementById('buyNowBtn').onclick = function() {
+                if (product.stock > 0) {
+                    showSuccessMessage(`ط¬ط§ط±ظٹ طھط­ظˆظٹظ„ظƒ ظ„ط¥طھظ…ط§ظ… ط´ط±ط§ط، "${product.name}"`);
+                    setTimeout(() => {
+                        window.location.href = 'checkout.html';
+                    }, 2000);
+                } else {
+                    alert('ط¹ط°ط±ط§ظ‹طŒ ظ‡ط°ط§ ط§ظ„ظ…ظ†طھط¬ ط؛ظٹط± ظ…طھظˆظپط± ظپظٹ ط§ظ„ظ…ط®ط²ظˆظ†');
+                }
+            };
+            
+            // ط²ط± ط§ظ„ظ…ظپط¶ظ„ط©
+            document.getElementById('favoriteBtn').onclick = function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-regular')) {
+                    icon.classList.remove('fa-regular');
+                    icon.classList.add('fa-solid');
+                    this.classList.remove('btn-outline-danger');
+                    this.classList.add('btn-danger');
+                    showSuccessMessage(`طھظ… ط¥ط¶ط§ظپط© "${product.name}" ط¥ظ„ظ‰ ط§ظ„ظ…ظپط¶ظ„ط©`);
+                } else {
+                    icon.classList.remove('fa-solid');
+                    icon.classList.add('fa-regular');
+                    this.classList.remove('btn-danger');
+                    this.classList.add('btn-outline-danger');
+                    showSuccessMessage(`طھظ… ط¥ط²ط§ظ„ط© "${product.name}" ظ…ظ† ط§ظ„ظ…ظپط¶ظ„ط©`);
+                }
+            };
+        }
+        
+        function showSuccessMessage(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-success alert-dismissible fade show position-fixed';
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alertDiv.innerHTML = `
+                <i class="fa-solid fa-check-circle"></i> ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.parentNode.removeChild(alertDiv);
+                }
+            }, 5000);
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

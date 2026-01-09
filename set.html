@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Elviora store  </title>
+    <link rel="icon" href="images/logo1.jpg"> <!---تكملة مسار الصوؤة يلي بدي حطها ايقونة-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- start header -->
+<header>
+    <div class="top-header py-2 ">
+        <div class="container">
+        <div class="row align-items-center">
+            <div class="col-4 col-md-2 mt-2 col-md-4">
+                <a href="">  <!---لوغو قابل للضغط-->
+                    <img width="100" src="images/empty logo.png" alt="logo">
+                </a>
+            </div>
+
+            <div class="col-4 col-md-2 mt-2 col-md-4 ">
+                <input type="text" class="form-control" placeholder="اكتب اسم المنتج للبحث عنه">
+            </div>
+
+            <div class="col-md-4 left-header d-flex align-items-center d-none d-lg-flex justify-content-end">
+                <a data-bs-toggle="offcanvas" href="#cart" role="button" class="position-relative aria-controls="offcanvasExample">
+                    <span> السلة</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                      <!-- عداد السلة -->
+  <span id="cartCount"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+    0
+  </span>
+                </a>
+                <a data-bs-toggle="offcanvas" href="#login" role="button" aria-controls="offcanvasExample">
+                    <span class="js-login-label"> الدخول</span><span class="js-user-name d-none" data-user-name></span>
+                    <i class="fa-solid fa-user"></i>
+                </a>
+               <a data-bs-toggle="offcanvas" href="#currency" role="button" aria-controls="offcanvasCurrency">
+                    <span> تحويل العملة</span>
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                </a>
+               <!-- زر القلب في الهيدر -->
+                <a data-bs-toggle="offcanvas" href="#fav" role="button" aria-controls="offcanvasExample" class="position-relative">
+                   <span>المفضلة</span>
+                 <i class="fa-solid fa-heart"></i>
+                <!-- عدّاد المفضلة -->
+          <span id="favCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                 0
+          </span>
+              </a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttom-header ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="container">
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<div>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#login">
+    <i class="fa-solid fa-user"></i>
+    </button>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#currency">
+   <i class="fa-solid fa-money-bill-transfer"></i>
+    </button>
+     <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#fav">
+    <i class="fa-solid fa-heart"></i>
+    </button>
+</div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="index.html">الرئيسية</a>
+    </li>
+
+    <!-- Dropdown اكسسوارات -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="accessoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        اكسسوارات
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="accessoriesDropdown">
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">حلق</a></li>
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">اطواق </a></li>
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">اساور</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="Rings.html">خواتم</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="set.html">اطقم</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="diversified.html">منوع</a>
+    </li>
+
+  </ul>
+</div>
+  </div>
+</nav>
+ </div>
+</header>
+    <!-- end header -->
+
+ <section class="products ">
+    <h2 class="text-center section-title"> </h2>
+<div class="container-fluid best-seller my-4">
+<!-- فلترة للعناصر بحيث عند الضغط على زر من الازرار يظهر على حسب الصنف -->
+<div class="btn-group mb-3 filter-button-group">
+  <button data-filter="*"  type="button" class="btn btn-filter">الكل</button>
+  <button data-filter=".Ssilver" type="button" class="btn btn-filter">  فضة </button>
+  <button data-filter=".Sgold" type="button" class="btn btn-filter"> ذهب </button>
+  <button data-filter=".Sdiamond" type="button" class="btn btn-filter"> ألماس </button>
+</div>
+
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-2 all-products">
+    <!-- data-id="1"  من اجل ظهور في صفحة المنتجات حسب id -->
+<div class="col product mb-3 Sgold" data-id="40">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/طقم ذهب بيضاوي مخطط 1.jpg" alt="طقم ذهب" class="product-img">
+    <div class="product-info">
+      <h3 class="product-title">طقم ذهب</h3>
+      <p> عيار 21  </p>
+      <p class="product-description d-none">
+       طقم ذهب بيضاوي مخطط 
+وزن 3.6 جرام 
+نقاوة لذهب 21 قيراط 
+مقاس الطقم :طول السلسة 40سم /حجم الحلق 0.8سم/مقاس الخاتم 18
+      </p>
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="price mb-2">
+        <span class="product-price">السعر:759$</span>
+      </div>
+      <span class="product-category d-none">أطقم ذهب</span>
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="أطقم ذهب"
+        data-price="759$"
+        data-img="images/طقم ذهب بيضاوي مخطط 1.jpg">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 Sgold" data-id="24">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/طقم الذهب الدمعة 1.jpg" alt="أطقم ذهب" class="product-img">
+    <div class="product-info">
+      <h3 class="product-title">طقم ذهب الدمعة </h3>
+      <p> عيار 21  </p>
+      <p class="product-description d-none">
+        طقم ذهب الدمعة عيار21
+بوزن 3.2 جرام من الذهب الخالص عيار21 تصميم مستوحى من الرقة والنعومة يعانق انوثتك يجمع بين سلسلة رقيقة و خاتم وحلق متناسقين 
+تفاصيل القطعة :
+نقاوة الذهب :21 قيراط
+وزن القطعة: 3.2 جرام
+طول السلسال : 40 سم
+مقاس الخاتم : 7 امريكي
+الإضافة : بالذهب الخالص
+      </p>
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="price mb-2">
+        <span class="product-price">السعر: 720$</span>
+      </div>
+      <span class="product-category d-none">طقم ذهب</span>
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="طقم ذهب الدمعة"
+        data-price="720"
+        data-img="images/طقم الذهب الدمعة 1.jpg">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 Sgold" data-id="42">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/طقم ذهب الزهرتين عيار21.webp" alt="طقم ذهب" class="product-img">
+    <div class="product-info">
+      <h3 class="product-title">طقم ذهب الزهرتين</h3>
+      <p> عيار 21  </p>
+      <p class="product-description d-none">
+       طقم ذهب الزهرتين عيار 21 
+وزن 6.7 جرام من الذهب الخالص عيار 21 تصميم مستوحى من الزهور المتفتحة تروي قصة الرقة والجمال , يجمع بين سلسلة أنيقة وخاتم وحلق متناغيمين .
+مقاس الطقم : طول السلسلة 40سم/حجم الحلق 1.8سم /مقاس الخاتم 14 (6.7امريكي)
+      </p>
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="price mb-2">
+        <span class="product-price">السعر: 3,520$</span>
+      </div>
+      <span class="product-category d-none">أطقم ذهب</span>
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="طقم ذهب"
+        data-price="3,520$"
+        data-img="images/طقم ذهب الزهرتين عيار21.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 Sgold" data-id="43">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/طقم ذهب الدائرة 1.jpg" alt="طقم ذهب" class="product-img">
+    <div class="product-info">
+      <h3 class="product-title">طقم ذهب الدائرة</h3>
+      <p> عيار 21  </p>
+      <p class="product-description d-none">
+       طقم ذهب الزهرة , قطعة ذهبية بوزن 5,1 جرام من ذهب الخالص عيار 21تصميم مستوحى من الانسيابية والكمال الدائري ليمنحك حضوراً مميزاً يجمع بين سلسلة أنيقة وخاتم وحلق متناغمين , قابل للتعدبل لتتألقي بإطلالة ساحرة وفاخرة
+       وزن القطعة : 5.1 جرام 
+طول السلسلة 40 سم/حجم الحلق 2.5 سم /مقاس الخاتم 17 (8امريكي)
+      </p>
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="price mb-2">
+        <span class="product-price">السعر: 3,000$</span>
+      </div>
+      <span class="product-category d-none">أطقم ذهب</span>
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="طقم ذهب"
+        data-price="3,000$"
+        data-img="images/طقم ذهب الدائرة 1.jpg">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- رسالة لا يوجد منتجات (قبل نهاية السيكشن) -->
+  <div class="no-products text-center d-none">
+    <p>لا يوجد منتجات في هذا القسم</p>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+    <footer>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+<div class="col f1 mb-3">
+<img class="w-50 " src="images/empty logo.png" alt="logo">
+<!-- نص بما يخص المتجر -->
+<!-- <p class="">
+متجرنا يقدم الجودة العالية وسرعة تلبية طلبات الزبائن
+</p> -->
+ <!-- يمنع دخول النقاطli داخل ال  -->
+<ul class="navbar-nav ">
+  <li><i class="fa-solid fa-location-dot"></i>سوريا - دمشق </li>
+  <li><i class="fa-solid fa-phone"></i> 09998841365  </li>
+  <li><i class="fa-solid fa-envelope"></i> ElvioraJewelry@gmail.com </li>
+</ul>
+</div>
+<div class="col f2 mb-3">
+  <h3>اهم الروابط</h3>
+  <ul class="navbar-nav">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="Collar_earr_brac.html">اكسسوارات</a></li>
+    <li><a href="Rings.html">خواتم</a></li>
+    <li><a href="set.html"> اطقم</a></li>
+    <li><a href="diversified.html">منوع </a></li>
+    
+  </ul>
+</div>
+<div class="col f3 mb-3">
+  <h3> التصنيفات</h3>
+  <ul class="navbar-nav">
+    <li><a href="">ذهب</a></li>
+    <li><a href="">ألماس</a></li>
+    <li><a href="">فضة</a></li>
+  </ul>
+</div>
+<div class="col f4 mb-3">
+  <h3>كن أول من يعرف</h3>
+  <p>اشترك لتصلك تشكيلاتنا الجديدة والعروض الحصرية مباشرة إلى بريدك.</p>
+  <form class="newsletter-form" novalidate>
+    <input class="form-control mb-3" name="email" type="email" placeholder="أدخل بريدك الإلكتروني" required>
+    <button class="btn btn-danger w-100" type="submit">اشترك الآن</button>
+    <div class="newsletter-message small mt-2" role="status"></div>
+  </form>
+</div>
+</form>
+</div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6 d-flex justify-content-start"></div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <p class=" m-0">جميع الحقوق المحفوظة &copy; 2025 لمتجر ELVIORA لبيع المجوهرات</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+ <!-- start modal -->
+<div class="modal fade" id="quick-product" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <img id="modalImg" class="img-fluid" src="" alt="">
+            <button class="btn btn-primary w-100 mt-2">كافة التفاصيل</button>
+            <button class="btn btn-outline-success w-100 mt-2" id="tryOnBtn">جرّبي بالكاميرا</button>
+          </div>
+          <div class="col">
+            <h1 class="modal-title fs-5 mt-2 my-3" id="modalTitle2"></h1>
+            <p class="product-description" id="modalDesc"></p>
+            <div class="price mb-3">
+              <span id="modalPrice"></span>
+            </div>
+            <div class="btns d-flex gap-2">
+              <div>
+                <div class="btn-group btns-quantity">
+                  <button type="button" class="btn increase">+</button>
+                  <button type="button" class="btn qty-btn" disabled>1</button>
+                  <button type="button" class="btn decrease">-</button>
+                </div>
+              </div>
+              <div class="d-flex gap-1 add-btn">
+                <button class="btn btn-danger add-to-cart">إضافة الى السلة</button>
+                <button class="btn btn-success buy-now">شراء الآن</button>
+              </div>
+            </div>
+            <hr>
+            <div class="gategory mb-3">
+              <span>التصنيفات:</span>
+              <a href="#" id="modalCategory"></a>
+               <!-- من اجل المشاركة على مواقع التواصل الاجتماعي -->
+    <div class="share">
+      <span>المشاركة:</span>
+      <div class="share-icons d-inline-flex gap-2">
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-whatsapp"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin-in"></i>
+      </div>
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal --><!-- start fav -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="fav" aria-labelledby="favLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="favLabel">المفضلة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul id="favList" class="list-unstyled"></ul>
+    <p id="favCountText" class="alert alert-info text-center d-none">0 منتجات</p>
+  </div>
+</div>
+<!-- end fav -->
+<!-- نافذة تحويل العملة -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="currency" aria-labelledby="currencyLabel">
+  <div class="offcanvas-header">
+    <h5 id="currencyLabel">تحويل العملة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="mb-3">
+      <label class="form-label">سعر الدولار الحالي (ل.س):</label>
+      <input type="text" class="form-control" id="usdRate" readonly>
+      <small class="text-muted">يتم تحديث السعر تلقائياً عند فتح النافذة.</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="usdAmount" class="form-label">المبلغ بالدولار (USD):</label>
+      <input type="number" class="form-control" id="usdAmount" placeholder="مثال: 150">
+    </div>
+    <button class="btn btn-primary w-100 mb-3" id="btnUsdToSyp">تحويل إلى ليرة</button>
+
+    <div class="mb-3">
+      <label for="sypAmount" class="form-label">المبلغ بالليرة السورية (SYP):</label>
+      <input type="number" class="form-control" id="sypAmount" placeholder="مثال: 1777500">
+    </div>
+    <button class="btn btn-primary w-100 mb-3" id="btnSypToUsd">تحويل إلى دولار</button>
+
+    <button class="btn btn-outline-secondary w-100" id="btnClear">مسح</button>
+
+    <div id="result" class="alert d-none mt-3"></div>
+
+    <hr>
+
+    <a href="https://www.sp-today.com//" target="_blank"
+       class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2">
+      <i class="fa-solid fa-globe"></i>
+      الليرة اليوم - أسعار الذهب والدولار
+    </a>
+
+  </div>
+</div>
+
+
+<!-- end -->
+
+<!-- cart -->
+ <!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas سلة المشتريات -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cart" aria-labelledby="cartLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartLabel">سلة المشتريات</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row row-cols-1 row-mini-card"></div>
+    <p id="cartTotal" class="alert alert-danger p-3 my-3 text-center">مجموع المنتجات: 0$.</p>
+    <button id="viewCartBtn" class="btn btn-primary w-100 mb-2">عرض السلة</button>
+    <button id="checkoutBtn" class="btn btn-danger w-100">إتمام الطلب</button>
+  </div>
+</div>
+
+<!-- log in -->
+ <!-- يسار (end)و  ( start)يمين -->
+
+<!-- Offcanvas تسجيل الدخول -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="login" aria-labelledby="loginLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="loginLabel">تسجيل الدخول</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="إغلاق"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mini-login">
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">اسم المستخدم أو البريد</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required>
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">كلمة المرور</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="••••••" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">تذكر بياناتي</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+      </form>
+
+      <div class="alert alert-danger my-3 text-center d-none" id="loginError">
+        البريد أو كلمة المرور غير صحيحة
+      </div>
+
+
+      <hr>
+
+      <div class="text-center mt-3">
+        <i class="fa-regular fa-user fa-5x"></i>
+        <p class="mt-2">لا يوجد لديك حساب؟</p>
+        <a href="register.html" class="btn btn-danger w-100 text-white">إنشاء حساب جديد</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <Script src="js/bootstrap.js"></Script>
+    <script src="js/auth.js"></script>
+    <script src="js/tryon.js"></script>
+
+<Script src="js/gold.js"></Script>
+<script src="js/dynamic-ratings.js"></script>
+<script src="js/dynamic-products.js"></script>
+<script src="js/newsletter.js"></script>`n<script src="js/currency.js"></script>`n<script src="js/chatbot_widget.js?v=20260209"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

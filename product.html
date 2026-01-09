@@ -1,0 +1,1121 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> منتجات</title>
+    <link rel="icon" href="images/logo1.jpg"> <!---تكملة مسار الصوؤة يلي بدي حطها ايقونة-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- start header -->
+<header>
+    <div class="top-header py-2 ">
+        <div class="container">
+        <div class="row align-items-center">
+            <div class="col-4 col-md-2 mt-2 col-md-4">
+                <a href="">  <!---لوغو قابل للضغط-->
+                    <img width="100" src="images/empty logo.png" alt="logo">
+                </a>
+            </div>
+
+            <div class="col-4 col-md-2 mt-2 col-md-4 ">
+                <input type="text" class="form-control" placeholder="اكتب اسم المنتج للبحث عنه">
+            </div>
+
+            <div class="col-md-4 left-header d-flex align-items-center d-none d-lg-flex justify-content-end">
+                <a data-bs-toggle="offcanvas" href="#cart" role="button" class="position-relative aria-controls="offcanvasExample">
+                    <span> السلة</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                      <!-- عداد السلة -->
+  <span id="cartCount"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+    0
+  </span>
+                </a>
+                <a data-bs-toggle="offcanvas" href="#login" role="button" aria-controls="offcanvasExample">
+                    <span class="js-login-label"> الدخول</span><span class="js-user-name d-none" data-user-name></span>
+                    <i class="fa-solid fa-user"></i>
+                </a>
+               <a data-bs-toggle="offcanvas" href="#currency" role="button" aria-controls="offcanvasCurrency">
+                    <span> تحويل العملة</span>
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                </a>
+               <!-- زر القلب في الهيدر -->
+                <a data-bs-toggle="offcanvas" href="#fav" role="button" aria-controls="offcanvasExample" class="position-relative">
+                   <span>المفضلة</span>
+                 <i class="fa-solid fa-heart"></i>
+                <!-- عدّاد المفضلة -->
+          <span id="favCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                 0
+          </span>
+              </a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttom-header ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="container">
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+<div>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </button>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#login">
+    <i class="fa-solid fa-user"></i>
+    </button>
+    <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#currency">
+   <i class="fa-solid fa-money-bill-transfer"></i>
+    </button>
+     <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="offcanvas" href="#fav">
+    <i class="fa-solid fa-heart"></i>
+    </button>
+</div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="index.html">الرئيسية</a>
+    </li>
+
+    <!-- Dropdown اكسسوارات -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="accessoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        اكسسوارات
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="accessoriesDropdown">
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">حلق</a></li>
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">اطواق </a></li>
+        <li><a class="dropdown-item" href="Collar_earr_brac.html">اساور</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="Rings.html">خواتم</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="set.html">اطقم</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="diversified.html">منوع</a>
+    </li>
+
+  </ul>
+</div>
+  </div>
+</nav>
+ </div>
+</header>
+    <!-- end header -->
+
+
+
+
+
+
+<!-- جميع البيانات من سعر ةتصنيف و وصف ستتغير عند وضع البيانات بالجافا او بي اتش بي واستدعائها لهنا -->
+<section class="product-detail mt-5">
+  <div class="container">
+
+    <div class="row justify-content-end">
+
+      <!-- الصور (سلايدر) على اليمين -->
+      <div class="col-md-4">
+        <div id="carouselProduct" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators carousel-images">
+            <!-- لعرض اشكال المنتج من كافا الاتجاهات -->
+            <img data-bs-target="#carouselProduct" data-bs-slide-to="0" class="active img-slider" src="images/img2.jpg" alt="">
+            <img data-bs-target="#carouselProduct" data-bs-slide-to="1" class="img-slider" src="images/ws-1.jpg" alt="">
+            <img data-bs-target="#carouselProduct" data-bs-slide-to="2" class="img-slider" src="images/ws-2.jpg" alt="">
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/img2.jpg" class="d-block w-100" alt="منتج">
+            </div>
+            <div class="carousel-item">
+              <img src="images/ws-1.jpg" class="d-block w-100" alt="منتج">
+            </div>
+            <div class="carousel-item">
+              <img src="images/ws-2.jpg" class="d-block w-100" alt="منتج">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- التفاصيل على اليسار -->
+      <div class="col-md-7">
+        <h1 class="modal-title fs-4 mt-2 mb-3" id="productTitle">اسم المنتج</h1>
+        <p class="product-description" id="productDescription">
+          وصف المنتج يظهر هنا. يمكن ملؤه ديناميكيًا من JS أو PHP.
+        </p>
+
+        <!-- التقييم الديناميكي -->
+        <div class="reviews-section mb-4">
+          <div class="reviews-summary mb-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="rating-display">
+                <div class="stars-display" id="averageStars">
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <span class="rating-text" id="ratingText">0.0 (0 تقييم)</span>
+              </div>
+              <button class="btn btn-review-outline btn-sm" data-bs-toggle="modal" data-bs-target="#reviewsModal">
+                عرض جميع التقييمات
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- السعر -->
+        <div class="price mb-3">
+          <span id="productPrice">السعر: 150$</span>
+        </div>
+
+        <!-- Variants -->
+        <div class="product-variants mb-3" id="productVariantWrap" style="display:none;">
+          <label for="productVariantSelect">الخيارات المتاحة:</label>
+          <select id="productVariantSelect" class="form-select" style="max-width:300px;">
+            <option value="">-- اختيار --</option>
+          </select>
+        </div>
+<!-- ماعم تشتغل معي لهيك وقفتا -->
+        <!-- أزرار الكمية والسلة -->
+        <div class="btns d-flex flex-wrap gap-2 mb-3 align-items-center">
+          <div class="d-flex gap-1 add-btn">
+            <button class="btn btn-danger add-to-cart">إضافة للسلة</button>
+            <button class="btn btn-success buy-now">شراء الآن</button>
+          </div>
+          <a href="javascript:history.back()" class="btn btn-outline-secondary">رجوع</a>
+        </div>
+
+        <hr>
+
+        <!-- التصنيف -->
+        <div class="gategory mb-3">
+          <span>التصنيفات:</span>
+          <a href="#" id="productCategory"> </a>
+        </div>
+
+        <!-- مشاركة على وسائل التواصل -->
+        <div class="share">
+          <span>المشاركة:</span>
+          <div class="share-icons d-inline-flex gap-2">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="slid-product">
+  <div class="container-fluid">
+    <h2 class="text-center section-title"> منتجات أخرى قد تعجبك</h2>
+
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+<div class="col product mb-3 gold swiper-slide " data-id="13">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/قلادة ذهب عيار 18 (2).webp" alt="قلادة ذهب " class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">قلادة ذهب </h3>
+      <p> عيار 18 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+عقد ذهب   عيار 18 
+يجمع بين البساطة والفخامة
+تفاصيل المنتج:
+أضيفي لمسة من الرقي والنعومة إلى إطلالتك مع هذا العقد الذهبي الأنيق، المصمم بعناية ليجمع بين البساطة والفخامة في آنٍ واحد.
+ارتديه في مناسباتك الخاصة، أو اجعليه رفيقاً لإطلالتك اليومية، ليمنحك حضوراً راقياً لا يُنسى.
+تفصيلته الهادئة، وفصّه اللامع، يرويان أناقتك دون الحاجة إلى كلمات.
+قطعة تُكمّل أنوثتك، وتُعبّر عن ذوقك بكل رقي
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 510$ </span>
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> قلادة ذهب </span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" قلادة ذهب "
+        data-price="510"
+        data-img="images/قلادة ذهب عيار 18 (2).webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 gold swiper-slide " data-id="22">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/خاتم ذهب قلب.webp" alt=" خاتم ذهب قلب" class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">خاتم ذهب قلب</h3>
+      <p> عيار 18 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+ارتقِ بذوقك إلى قمّة الأناقة مع هذا الخاتم الذهبي الراقي، بتصميم قلب ينبض بالحب ومُرصّع بفصوص الزركون اللامعة التي تعكس سحر الضوء في كل زاوية. قطعة تنطق بالأنوثة والنعومة، وتُجسّد لحظة حب خالدة. اقتنيه الآن وامنحي نفسك أو من تحبين لمسة فخامة لا تُقاوم، لأنّكِ تستحقين التميّز بلا تردّد.
+تفاصيل القطعة:
+نقاوة الذهب: 18 قيراط
+وزن القطعة: 1.9
+مقاس الخاتم: 7.5 امريكي 
+الإضافة : مزين بفصوص الزركون
+
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 258$ </span>
+        <!-- <span class="price_old">250$</span>    -->
+              <!-- &nbsp;&nbsp;  فاصل بين الارقام -->
+              <!-- <span class="price_new">220$</span>  -->
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> خاتم ذهب </span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" خاتم ذهب "
+        data-price="258"
+        data-img="images/خاتم ذهب قلب.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="8">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/اسم من ذهب2.webp" alt="اسم من ذهب " class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title"> اسم من ذهب </h3>
+      <p>عيار 18 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+
+حكاية القطعة:
+
+هذه القطعة ستكون الإختيار المناسب لك لتقديم هدية ذو قيمة لاحبائك , تحافظ على تألق المرتدي بها دائما كسلسلة بالأسم،
+نفتح المجال أمام خيالكِ لاختيار تصميم سلسال ذهب اسمكِ بالشكل الذي يلامس قلبكِ ويحرّك مشاعرك باللغة العربية او الإنجليزية .
+
+تفاصيل القطعة:
+نقاوة الذهب: يمكنك اختيار العيار المناسب لك عن طريق التواصل معنا
+
+وزن القطعة: من 3 الى 3.5 جرام تقريباً
+
+طول التعليقة : 2.5*3 سم تقريباً
+
+طول السلسال : 40 سم تقريباً
+
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 475$ </span>
+      </div>
+
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> اسم من ذهب</span>
+
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="اسم من ذهب"
+        data-price="475"
+        data-img="images/اسم من ذهب2.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 gold swiper-slide" data-id="3">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/تعليقة غيار 24(2).webp" alt="تعليقة ذهب " class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title"> تعليقة ذهب </h3>
+      <p>عيار 24 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+      تعليقة ذهب عيار 24 
+  وزن :  5جرام 
+تألقي بما يليق بكِ!
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <!-- <i class="fa-solid fa-star"></i> --> 
+      </div>
+
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 6,800$ </span>
+      </div>
+
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> تعليقة ذهب</span>
+
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" تعليقة ذهب"
+        data-price="6,800"
+        data-img="images/تعليقة غيار 24(2).webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 diamond swiper-slide " data-id="14">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/عقد الماس مربع.webp" alt="قلادة الماس مربع" class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">قلادة الماس مربع </h3>
+      <p> عيار 18 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+قلادة ألماس مربع ( نوع الألماس SI-وزن الألماس: 0.81 )
+عقد مربع مزين بفصوص الألماس على شكل مربع عيار 18 قيراط، مشغول بحرفية عالية وإتقان حتى يلائم جاذبيتك ارتديه في المناسبات الخاصة والأعراس على فستان ذو لون أحمر فاقع مع تسريحة شعر متدلية تسحر الحضور.
+تفاصيل القطعة:
+لون الذهب: أبيض.
+وزن القطعة: 2.79 جرام / وزن الألماس: 0.81 قيراط.
+نقاوة الذهب: 18 قيراط.
+قياسات القطعة: طول السلسال 22.5 سم.
+نوع الفصوص المستخدمة: مزين بفصوص ألماس من نوع SI وهو الألماس ذو الشوائب القليلة ويعتبر الأفضل من حيث النقاوة.
+
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 3,800$ </span>
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> قلادة ألماس </span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" قلادة ألماس "
+        data-price="3,800"
+        data-img="images/عقد الماس مربع.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 gold swiper-slide " data-id="15">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/حلق هندي عيار21.webp" alt="حلق ذهب هندي" class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">حلق ذهب هندي</h3>
+      <p> عيار 21 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+        حلق هندي فريد من نوعه صُنع من ذهب عيار 21 قيراط و يتميز هذا الحلق بتصميمه الأنيق والمتقن و يزن 12.1 جرام مما يمنحه الوزن المثالي والراحة و اشتري في قطعة مجوهرات تدوم طويلاً وتحمل القيمة الثقافية للتراث الهندي.
+يتميز بتفاصيل هندية مذهلة وتصميم فريد يجعله قطعة فريدة من نوعها.
+مصنوع من ذهب عيار 21 قيراط الذي يعطيه لمعانًا رائعًا ويتحمل اختبار الزمن.
+يوفر توازنًا مثاليًا بين الثقل والراحة عند ارتدائه.
+يمثل الذهب استثمارًا آمنًا ومرغوبًا، حيث يمكن أن يزيد قيمته مع مرور الوقت.
+يحمل القيم والتراث الثقافي للهند، مما يجعله هدية مثالية لمحبي الثقافة الهندية.
+يضيف لمسة من التميز والأناقة إلى أي مظهر.
+يعد هدية مثالية للمناسبات مثل الأعياد والأعراس والذكريات.
+يمزج بين الأصالة والحداثة مما يجعله مناسبًا للأشخاص الذين يهتمون بالموضة.
+الوزن : 12.1 جرام
+العيار : 21 قيراط
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 1,700$ </span>
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> حلق ذهب هندي</span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="  حلق ذهب هندي"
+        data-price="1,700"
+        data-img="images/حلق هندي عيار21.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 diamond swiper-slide " data-id="16">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/عقد ألماس قيراط 0.99.webp" alt="قلادة ألماس " class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">قلادة ألماس </h3>
+      <p>قيراط 0.99  </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+عقد ألماس خالِد للنساء – مجوهرات فاخرة
+ارتقي بأناقتك مع عقد ماسي كلاسيكي يعكس الجمال والبريق. بتصميم متقن يجسد الأناقة الخالدة، يُعدّ هذا العقد إضافة راقية إلى مجموعة مجوهراتك، وتجسيداً للفخامة في أبهى صورها.
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 4,580$ </span>
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> قلادة ألماس </span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" قلادة ألماس "
+        data-price=" 4,580"
+        data-img="images/عقد ألماس قيراط 0.99.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 gold swiper-slide " data-id="17">
+<div class="card overflow-hidden">
+  <div class="quick-icons">
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+  </div>
+  <!-- صورة المنتج -->
+    <img src="images/دبلة ذهب الزهور خاتم المتباعدة.webp" alt="خاتم ذهب الزهور المتباعدة" class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">خاتم الزهور المتباعدة  </h3>
+      <p> عيار 18 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+خاتم ذهب الزهور المتباعدة ( عيار 18 )
+لمسة من النعومة تحمل في طيّاتها فخامة لا تُقاوم…
+
+خاتم الزهور المتباعدة صُنعت من الذهب الخالص وزُيّنت بفصوص الزركون اللامعة التي تعكس الضوء برقة وأناقة. تصميم الزهور المتباعدة يمنح القطعة توازنًا ساحرًا بين البساطة والتميّز، ويُضيف على يدك حضورًا راقٍ لا يُغفل
+
+تفاصيل القطعة:
+
+
+نقاوة الذهب: 18 قيراط
+
+وزن القطعة: 2.6 \ 2.7 \ 2.8
+مقاس الخاتم : 12 ( امريكي 6 ) 
+
+الإضافة : مزين بفصوص الزركون
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 390$ </span>
+      </div>
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> خاتم ذهب </span>
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title=" خاتم ذهب "
+        data-price="390"
+        data-img="images/دبلة ذهب الزهور خاتم المتباعدة.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col product mb-3 Rdiamond swiper-slide" data-id="31">
+  <div class="card overflow-hidden">
+    <!-- الأيقونات العلوية -->
+    <div class="quick-icons">
+      <!-- زر نظرة سريعة يفتح المودال -->
+      <a href="#quick-product" class="quick-view-btn" data-bs-toggle="modal">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+      <!-- زر المفضلة -->
+      <button type="button" class="favorite-btn btn p-0 border-0 bg-transparent">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+    </div>
+    <!-- صورة المنتج -->
+    <img src="images/خاتم ألماس قيراط 0.03.webp" alt="خاتم ألماس " class="product-img">
+    <div class="product-info">
+      <!-- اسم المنتج -->
+      <h3 class="product-title">خاتم ألماس </h3>
+      <p>قيراط 0.24 </p>
+      <!-- الوصف (مخفي يظهر في المودال) -->
+      <p class="product-description d-none">
+خاتم ألماس فاخر بلمسة بريق استثنائية – عيار 18 قيراط
+
+تألقي بإطلالة راقية مع هذا الخاتم الفاخر المصنوع من ذهب عيار 18 قيراط، والمزين بألماسة رئيسية بوزن 0.24 قيراط تتلألأ إلى جانب قطعة ألماس صغيرة تضيف لمسة إشراق لا مثيل لها.
+
+تصميم أنيق يجمع بين الرقي والبساطة ليكون الخيار المثالي للذوق الرفيع.
+
+التفاصيل:
+
+العيار: ذهب 18 قيراط
+
+وزن الذهب: ~2.5 غرام
+
+وزن الألماس الكلي: ~0.29 قيراط
+
+النقاء: SI–VS
+
+
+      </p>
+      <!-- التقييم -->
+      <div class="stars mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i> 
+      </div>
+
+      <!-- السعر -->
+      <div class="price mb-2">
+        <span class="product-price">السعر : 1,500$ </span>
+      </div>
+
+      <!-- التصنيف (مخفي - يظهر في المودال) -->
+      <span class="product-category d-none"> خاتم ألماس</span>
+
+      <!-- زر إضافة للسلة -->
+      <button  
+        class="btn btn-danger w-100 add-to-cart"
+        data-title="خاتم ألماس"
+        data-price="1,500$"
+        data-img="images/خاتم ألماس قيراط 0.03.webp">
+        <i class="fa fa-cart-plus"></i> إضافة للسلة
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- start footer -->
+<footer>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+<div class="col f1 mb-3">
+<img class="w-50 " src="images/empty logo.png" alt="logo">
+<!-- نص بما يخص المتجر -->
+<!-- <p class="">
+متجرنا يقدم الجودة العالية وسرعة تلبية طلبات الزبائن
+</p> -->
+ <!-- يمنع دخول النقاطli داخل ال  -->
+<ul class="navbar-nav ">
+  <li><i class="fa-solid fa-location-dot"></i>سوريا - دمشق </li>
+  <li><i class="fa-solid fa-phone"></i> 09998841365  </li>
+  <li><i class="fa-solid fa-envelope"></i> ElvioraJewelry@gmail.com </li>
+</ul>
+</div>
+<div class="col f2 mb-3">
+  <h3>اهم الروابط</h3>
+  <ul class="navbar-nav">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="Collar_earr_brac.html">اكسسوارات</a></li>
+    <li><a href="Rings.html">خواتم</a></li>
+    <li><a href="set.html"> اطقم</a></li>
+    <li><a href="diversified.html">منوع </a></li>
+    
+  </ul>
+</div>
+<div class="col f3 mb-3">
+  <h3> التصنيفات</h3>
+  <ul class="navbar-nav">
+    <li><a href="">ذهب</a></li>
+    <li><a href="">ألماس</a></li>
+    <li><a href="">فضة</a></li>
+  </ul>
+</div>
+<div class="col f4 mb-3">
+  <h3>كن أول من يعرف</h3>
+  <p>اشترك لتصلك تشكيلاتنا الجديدة والعروض الحصرية مباشرة إلى بريدك.</p>
+  <form class="newsletter-form" novalidate>
+    <input class="form-control mb-3" name="email" type="email" placeholder="أدخل بريدك الإلكتروني" required>
+    <button class="btn btn-danger w-100" type="submit">اشترك الآن</button>
+    <div class="newsletter-message small mt-2" role="status"></div>
+  </form>
+</div>
+</form>
+</div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6 d-flex justify-content-start"></div>
+      <div class="col-md-6 d-flex align-items-center justify-content-end">
+        <p class=" m-0">جميع الحقوق المحفوظة &copy; 2025 لمتجر ELVIORA لبيع المجوهرات</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+ <!-- start modal -->
+<div class="modal fade" id="quick-product" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
+            <img id="modalImg" class="img-fluid" src="" alt="">
+            <button class="btn btn-primary w-100 mt-2">كافة التفاصيل</button>
+            <button class="btn btn-outline-success w-100 mt-2" id="tryOnBtn">جرّبي بالكاميرا</button>
+          </div>
+          <div class="col">
+            <h1 class="modal-title fs-5 mt-2 my-3" id="modalTitle2"></h1>
+            <p class="product-description" id="modalDesc"></p>
+            <div class="price mb-3">
+              <span id="modalPrice"></span>
+            </div>
+            <div class="btns d-flex gap-2">
+              <div>
+                <div class="btn-group btns-quantity">
+                  <button type="button" class="btn increase">+</button>
+                  <button type="button" class="btn qty-btn" disabled>1</button>
+                  <button type="button" class="btn decrease">-</button>
+                </div>
+              </div>
+              <div class="d-flex gap-1 add-btn">
+                <button class="btn btn-danger add-to-cart">إضافة الى السلة</button>
+                <button class="btn btn-success buy-now">شراء الآن</button>
+              </div>
+            </div>
+            <hr>
+            <div class="gategory mb-3">
+              <span>التصنيفات:</span>
+              <a href="#" id="modalCategory"></a>
+               <!-- من اجل المشاركة على مواقع التواصل الاجتماعي -->
+    <div class="share">
+      <span>المشاركة:</span>
+      <div class="share-icons d-inline-flex gap-2">
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-whatsapp"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-linkedin-in"></i>
+      </div>
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end modal -->
+
+<!-- مودال التقييمات -->
+<div class="modal fade" id="reviewsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">تقييمات المنتج</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <!-- إحصائيات التقييمات -->
+        <div class="reviews-stats mb-4">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="average-rating">
+                <h2 id="avgRatingNumber">0.0</h2>
+                <div class="stars-large" id="avgRatingStars">
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <p class="text-muted" id="totalReviewsText">0 تقييم</p>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="rating-breakdown" id="ratingBreakdown">
+                <!-- سيتم ملؤها ديناميكياً -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- نموذج إضافة تقييم -->
+        <div class="add-review-section mb-4" id="addReviewSection">
+          <h6>أضف تقييمك</h6>
+          <form id="reviewForm">
+            <div class="mb-3">
+              <label class="form-label">التقييم:</label>
+              <div class="rating-input" id="ratingInput">
+                <i class="fa-regular fa-star" data-rating="1"></i>
+                <i class="fa-regular fa-star" data-rating="2"></i>
+                <i class="fa-regular fa-star" data-rating="3"></i>
+                <i class="fa-regular fa-star" data-rating="4"></i>
+                <i class="fa-regular fa-star" data-rating="5"></i>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="reviewText" class="form-label">تعليقك (اختياري):</label>
+              <textarea class="form-control" id="reviewText" rows="3" placeholder="شاركنا رأيك في المنتج..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-review-primary">إضافة التقييم</button>
+          </form>
+        </div>
+
+        <!-- قائمة التقييمات -->
+        <div class="reviews-list" id="reviewsList">
+          <!-- سيتم ملؤها ديناميكياً -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- start fav -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="fav" aria-labelledby="favLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="favLabel">المفضلة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul id="favList" class="list-unstyled"></ul>
+    <p id="favCountText" class="alert alert-info text-center d-none">0 منتجات</p>
+  </div>
+</div>
+<!-- end fav -->
+<!-- نافذة تحويل العملة -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="currency" aria-labelledby="currencyLabel">
+  <div class="offcanvas-header">
+    <h5 id="currencyLabel">تحويل العملة</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="mb-3">
+      <label class="form-label">سعر الدولار الحالي (ل.س):</label>
+      <input type="text" class="form-control" id="usdRate" readonly>
+      <small class="text-muted">يتم تحديث السعر تلقائياً عند فتح النافذة.</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="usdAmount" class="form-label">المبلغ بالدولار (USD):</label>
+      <input type="number" class="form-control" id="usdAmount" placeholder="مثال: 150">
+    </div>
+    <button class="btn btn-primary w-100 mb-3" id="btnUsdToSyp">تحويل إلى ليرة</button>
+
+    <div class="mb-3">
+      <label for="sypAmount" class="form-label">المبلغ بالليرة السورية (SYP):</label>
+      <input type="number" class="form-control" id="sypAmount" placeholder="مثال: 1777500">
+    </div>
+    <button class="btn btn-primary w-100 mb-3" id="btnSypToUsd">تحويل إلى دولار</button>
+
+    <button class="btn btn-outline-secondary w-100" id="btnClear">مسح</button>
+
+    <div id="result" class="alert d-none mt-3"></div>
+
+    <hr>
+
+    <a href="https://www.sp-today.com//" target="_blank"
+       class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2">
+      <i class="fa-solid fa-globe"></i>
+      الليرة اليوم - أسعار الذهب والدولار
+    </a>
+
+  </div>
+</div>
+
+
+<!-- end -->
+
+<!-- cart -->
+ <!-- يسار (end)و  ( start)يمين -->
+<!-- Offcanvas سلة المشتريات -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cart" aria-labelledby="cartLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartLabel">سلة المشتريات</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row row-cols-1 row-mini-card"></div>
+    <p id="cartTotal" class="alert alert-danger p-3 my-3 text-center">مجموع المنتجات: 0$.</p>
+    <button id="viewCartBtn" class="btn btn-primary w-100 mb-2">عرض السلة</button>
+    <button id="checkoutBtn" class="btn btn-danger w-100">إتمام الطلب</button>
+  </div>
+</div>
+
+<!-- log in -->
+ <!-- يسار (end)و  ( start)يمين -->
+
+<!-- Offcanvas تسجيل الدخول -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="login" aria-labelledby="loginLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="loginLabel">تسجيل الدخول</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="إغلاق"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mini-login">
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">اسم المستخدم أو البريد</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required>
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">كلمة المرور</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="••••••" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">تذكر بياناتي</label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+      </form>
+
+      <div class="alert alert-danger my-3 text-center d-none" id="loginError">
+        البريد أو كلمة المرور غير صحيحة
+      </div>
+
+
+      <hr>
+
+      <div class="text-center mt-3">
+        <i class="fa-regular fa-user fa-5x"></i>
+        <p class="mt-2">لا يوجد لديك حساب؟</p>
+        <a href="register.html" class="btn btn-danger w-100 text-white">إنشاء حساب جديد</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/dynamic-ratings.js"></script>
+
+    <script src="js/auth.js"></script>
+    <script src="js/tryon.js"></script>
+<script src="js/gold.js"></script>
+<script src="js/currency.js"></script>
+<script src="js/product-page.js"></script>
+<script src="js/product-details.js"></script>
+<script src="js/reviews.js"></script>
+<script src="js/newsletter.js"></script>
+<script src="js/chatbot_widget.js?v=20260209"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

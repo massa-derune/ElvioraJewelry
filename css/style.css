@@ -123,8 +123,13 @@ header {
 .top-header {
     background-color: var(--navyColor);
     color: var(--secondaryColor);
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.top-header.py-2 {
+    padding-top: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
 }
 
 .left-header a {
@@ -167,8 +172,8 @@ header {
 .buttom-header .navbar {
     background: transparent !important;
     box-shadow: none;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .buttom-header .nav-link {
@@ -343,16 +348,16 @@ body.reg-logi {
 }
 
 .categories .card.seno {
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 0 !important;
+    transition: transform 0.3s ease;
     display: inline-flex;
     flex-direction: column;
     overflow: hidden;
     border-radius: 16px;
-    background-color: #eef2f7;
-    padding: 14px;
+    background-color: transparent !important;
+    padding: 0 !important;
     height: 100%;
-    box-shadow: 0 12px 26px rgba(16, 26, 41, 0.12);
+    box-shadow: 0 6px 16px rgba(16, 26, 41, 0.08);
 }
 
 .categories .card.seno img {
@@ -361,14 +366,16 @@ body.reg-logi {
     height: 200px;
     object-fit: contain;
     transition: transform 0.3s ease;
-    background: #edf1f6;
+    background: transparent !important;
     border-radius: 12px;
-    padding: 10px;
+    padding: 0 !important;
+    box-shadow: none;
+    border: 0 !important;
 }
 
 .categories .card.seno:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(16, 26, 41, 0.16);
+    box-shadow: 0 10px 22px rgba(16, 26, 41, 0.12);
 }
 
 /* ===== BEST SELLER SECTION ===== */
@@ -400,7 +407,7 @@ body.reg-logi {
 /* ===== SECTION TITLES ===== */
 .section-title {
     margin-bottom: 30px;
-    font-family: 'Almarai', sans-serif;
+    font-family: 'Amiri', serif;
     font-weight: bold;
     text-align: center;
 }
@@ -415,7 +422,7 @@ body.reg-logi {
 }
 
 .product-info h3 {
-    font-family: 'Almarai', sans-serif;
+    font-family: 'Amiri', serif;
     font-weight: bold;
     font-size: 12px;
 }
@@ -510,6 +517,15 @@ body.reg-logi {
     display: block;
     border-radius: 12px;
     box-shadow: 0 8px 18px rgba(16, 26, 41, 0.08);
+}
+
+/* Override default card frame for categories */
+.categories .card.seno,
+.categories .card.seno img {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
 }
 
 .card {
